@@ -49,7 +49,7 @@ class crawler:
       word = words[i]
       if word in ignorewords: continue
       wordid = self.getentryid('wordlist', 'word', word)
-      sql = "insert into wordlocation(urlid,wordid,location) \
+      sql = "insert into wordlocation(urlid, wordid, location) \
           values (%d,%d,%d)" % (urlid, wordid, i)
       #print sql
       self.con.execute(sql)
@@ -79,10 +79,54 @@ class crawler:
       if v != None: return True
     return False
 
-  def addlinkref(self, urlFrom, urlTo, linktext):
-    pass
+  # add a link between two pages
+  def addlinkref(self, urlFrom, urlTo, link_text):
+    from_id = self.getentryid('urllist', 'url', urlFrom)
+    to_id = self.getentryid('urllist', 'url', urlTo)
+    if from_id == to_id: return
 
-  def crawl(self, pages, depth=2):
+    sql = "insert into link (fromid, toid) \
+        values (%d, %d)" % (from_id, to_id)
+    cur = self.con.execute(sql)
+    link_id = cur.lastrowid;
+
+    words = self.separate_words(link_text)
+    for word in words:
+      if word in ignorewords: continue
+      word_id = self.getentryid('wordlist', 'word', word)
+      self.con.execute(
+        'insert into linkwords (linkid, wordid) values (%d, %d)' % (link_id, word_id))
+
+  def calculate_page_rank(self, iterations = 40):
+    # clear out the current PageRank tables
+    self.con.execute('drop table if exists pagerank')
+    self.con.execute('create table pagerank(urlid primary key, score)')
+
+    # initialize every url with a PageRank of 1
+    self.con.execute('insert into pagerank select rowid, 1.0 from urllist')
+    self.dbcommit()
+
+    for i in range(iterations):
+      print 'Iteration %d' % i
+      for (urlid, ) in self.con.execute('select rowid from urllist'):
+        pr = 0.15
+
+        # loop through all the pages that link to this one
+        for (linker, ) in self.con.execute(
+            'select distinct fromid from link where toid = %d' % urlid):
+          # get the pagerank of the linker
+          linking_pr = self.con.execute(
+              'select score from pagerank where urlid = %d' % linker).fetchone()[0]
+
+          # get the total number of links from the linker
+          linking_count = self.con.execute(
+              'select count(*) from link where fromid = %d' % linker).fetchone()[0]
+          pr += 0.85 * (linking_pr / linking_count)
+        self.con.execute(
+            'update pagerank set score = %f where urlid = %d' % (pr, urlid))
+      self.dbcommit()
+
+  def crawl(self, pages, depth=1):
     for i in range(depth):
       newpages = set()
       for page in pages:
@@ -108,18 +152,20 @@ class crawler:
       pages = newpages
 
   def createindextables(self):
-    self.con.execute('create table urllist(url)')
-    self.con.execute('create table wordlist(word)')
-    self.con.execute('create table wordlocation(urlid,wordid,location)')
-    self.con.execute('create table link(fromid integer,toid integer)')
-    self.con.execute('create table linkwords(wordid,linkid)')
-    self.con.execute('create index wordidx on wordlist(word)')
-    self.con.execute('create index urlidx on urllist(url)')
-    self.con.execute('create index wordurlidx on wordlocation(wordid)')
-    self.con.execute('create index urltoidx on link(toid)')
-    self.con.execute('create index urlfromidx on link(fromid)')
-    self.dbcommit( )
-
+    try:
+      self.con.execute('create table urllist(url)')
+      self.con.execute('create table wordlist(word)')
+      self.con.execute('create table wordlocation(urlid,wordid,location)')
+      self.con.execute('create table link(fromid integer,toid integer)')
+      self.con.execute('create table linkwords(wordid,linkid)')
+      self.con.execute('create index wordidx on wordlist(word)')
+      self.con.execute('create index urlidx on urllist(url)')
+      self.con.execute('create index wordurlidx on wordlocation(wordid)')
+      self.con.execute('create index urltoidx on link(toid)')
+      self.con.execute('create index urlfromidx on link(fromid)')
+      self.dbcommit()
+    except:
+      pass
 
 class searcher:
   def __init__(self, dbname):
@@ -165,10 +211,39 @@ class searcher:
       return dict([(k, float(v)/max_score) for (k, v) \
           in scores.items()])
 
+  def link_text_score(self, rows, word_ids):
+    link_scores = dict([(row[0], 0) for row in rows])
+    for word_id in word_ids:
+      cur = self.con.execute(
+        'select link.fromid, link.toid \
+          from linkwords, link where wordid = %d and linkwords.linkid = link.rowid' % word_id)
+      for (from_id, to_id) in cur:
+        if to_id in link_scores:
+          pr = self.con.execute(
+              'select score from pagerank where urlid = %d' % from_id).fetchone()[0]
+          link_scores[to_id] += pr
+    max_score = max(link_scores.values())
+    normalize_scores = dict([(u, float(l)/max_score) for (u, l) in link_scores.items()])
+    return normalize_scores
+
+  def inbound_link_score(self, rows):
+    unique_urls = set([row[0] for row in rows])
+    inbound_count = dict([u, self.con.execute( \
+        'select count(*) from link where toid = %d' % u).fetchone()[0]] \
+        for u in unique_urls)
+    return self.normalize_scores(inbound_count)
+
   def frequency_score(self, rows):
     counts = dict([(row[0], 0) for row in rows])
     for row in rows: counts[row[0]] += 1
     return self.normalize_scores(counts, small_is_better = 1)
+
+  def page_rank_score(self, rows):
+    page_ranks = dict([(row[0], self.con.execute(
+      'select score from pagerank where urlid = %d' % row[0]).fetchone()[0]) for row in rows])
+    max_rank = max(page_ranks.values())
+    normalize_scores = dict([(u,float(l)/max_rank) for (u,l) in page_ranks.items( )])
+    return normalize_scores
 
   def get_scored_list(self, rows, word_ids):
     """
@@ -186,9 +261,12 @@ class searcher:
     """
     total_scores = dict([(row[0], 0) for row in rows])
 
-    # weights = [(1.0, self.frequency_score(rows))]
-    # weights = [(1.0, self.location_score(rows))]
-    weights = [(1.0, self.distance_score(rows))]
+    weights = [ (1.0, self.frequency_score(rows)),
+                (1.0, self.location_score(rows)),
+                (1.0, self.distance_score(rows)),
+                (1.0, self.inbound_link_score(rows)),
+                (1.0, self.link_text_score(rows, word_ids)),
+                (1.0, self.page_rank_score(rows))]
 
     for (weight, scores) in weights:
       for url in total_scores:
