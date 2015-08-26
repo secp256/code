@@ -1,0 +1,166 @@
+set nocompatible
+
+" bundle setting 
+au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 234)
+
+filetype off                  " required!
+
+set completeopt-=preview
+
+" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My bundles here:
+" original repos on GitHub
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'tpope/vim-rails.git'
+Bundle 'octol/vim-cpp-enhanced-highlight'
+Bundle 'syui/w-auto.vim'
+Bundle 'tpope/vim-commentary'
+Bundle 'honza/vim-snippets'
+
+" vim-scripts repos
+Bundle 'SQLComplete.vim'
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+Bundle 'STL-Syntax'
+Bundle 'a.vim'
+Bundle 'SirVer/ultisnips'
+Bundle 'python.vim'
+" non-GitHub repos
+Bundle 'git://git.wincent.com/command-t.git'
+" Git repos on your local machine (i.e. when working on your own plugin)
+
+" vim-snippets
+" SirVer/ultisnips
+let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
+let g:UltiSnipsExpandTrigger="ii"
+let g:UltiSnipsJumpForwardTrigger="<C-b>"
+let g:UltiSnipsJumpBackwardTrigger="<C-z>"
+
+""获取当前路径的上一级的路径
+function! GET_UP_PATH(dir)
+    let pos=len(a:dir)-1
+    while pos>0
+        if (a:dir[pos]=="/" )
+            return  strpart(a:dir,0,pos)
+        endif
+        let pos=pos-1
+    endwhile
+    return  ""
+endfunction
+
+"设置相关tags
+function! s:SET_TAGS()
+    let dir = expand("%:p:h") "获得源文件路径
+        "在路径上递归向上查找tags文件 
+        while dir!=""
+            if findfile("tags",dir) !=""
+                "找到了就加入到tags
+                 exec "set tags+=" . dir . "/tags"
+             endif
+            "得到上级路径
+            let dir=GET_UP_PATH(dir)
+        endwhile
+    endfunction
+
+autocmd BufEnter * call s:SET_TAGS()
+"set tags=tags
+set tags+=~/.vim/systags
+
+set notagbsearch
+
+set backspace=indent,eol,start
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set cindent
+
+" 在编辑过程中，在右下角显示光标位置的状态行
+set ruler
+
+set showcmd
+set hlsearch
+set incsearch
+set cino=g0:0          " let class's public: don't indent
+
+" F12 run python
+map <F12> :!/usr/bin/python %
+
+" map <c-w><c-t> :Tlist<cr>
+" map <c-w><c-m> :WMToggle<cr>
+" map <c-w><c-f> :FirstExplorerWindow<cr>
+" map <c-w><c-b> :BottomExplorerWindow<cr>
+":set cscopequickfix=s-,c-,d-,i-,t-,e-
+":cs add /home/broom/yeast/trunk/cscope.out /home/broom/yeast/trunk/
+" let g:winManagerWindowLayout='FileExplorer|TagList'
+":let Tlist_Use_Right_Window=1
+":nmap wm :WMToggle<cr>
+nnoremap <silent> <F3> :Grep<CR>
+
+nmap <M-j> mz:m+<cr>`z
+nmap <M-k> mz:m-2<cr>`z
+vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
+
+" 语法高亮度显示
+syntax on
+
+filetype plugin indent on
+set viminfo='20,\"50
+
+" 设置历史的行数
+set history=1000
+
+" Only do this part when compiled with support for autocommands
+if has("autocmd")
+    " In text files, always limit the width of text to 78 characters
+    autocmd BufRead *.txt set tw=78
+    " When editing a file, always jump to the last cursor position
+    autocmd BufReadPost *
+        \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+        \   exe "normal g'\"" |
+        \ endif
+endif
+" set bg=dark
+
+" 显示行号
+set nu
+imap <c-w> <Esc>
+
+filetype plugin on
+
+
+"------------------------------------------------------------------------------
+function! SET_PYTHON_IDENT()
+	set shiftwidth=2
+	set softtabstop=2
+	set tabstop=2
+	set backspace=2
+	set smarttab
+    set cursorcolumn
+endfunction
+
+au FileType python,ruby :call SET_PYTHON_IDENT()
+
+" Encoding related
+set encoding=UTF-8
+" set langmenu=zh_CN.UTF-8
+" language message zh_CN.UTF-8
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+set fileencoding=utf-8
+
+set t_Co=256
+"set background=dark
+"colorscheme charged-256
+"colorscheme desert256
+colorscheme darkburn
+
+au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 234)
