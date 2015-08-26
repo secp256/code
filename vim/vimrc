@@ -149,6 +149,7 @@ function! SET_PYTHON_IDENT()
 endfunction
 
 au FileType python,ruby :call SET_PYTHON_IDENT()
+au FileType python set omnifunc=pythoncomplete#Complete
 
 " Encoding related
 set encoding=UTF-8
@@ -159,8 +160,9 @@ set fileencoding=utf-8
 
 set t_Co=256
 "set background=dark
-"colorscheme charged-256
+colorscheme charged-256
 "colorscheme desert256
-colorscheme darkburn
+"colorscheme darkburn
+colorscheme monokai
 
 au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 234)
