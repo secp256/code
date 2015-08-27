@@ -1,50 +1,35 @@
-#!/usr/bin/python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-import gc
-from pprint import pprint
-import weakref
+import sys
 
-gc.set_debug(gc.DEBUG_LEAK)
+def main():
+  """
+  find needle in haystack
+  """
+  if len(sys.argv) < 3:
+    print 'usage: python %s string1 string2' % sys.argv[0] 
+    sys.exit(1)
 
-class ExpensiveObject(object):
-    def __init__(self, name):
-        self.name = name
-    def __repr__(self):
-        return 'ExpensiveObject(%s)' % self.name
-    def __del__(self):
-        print '(Deleting %s)' % self
-        
-def demo(cache_factory):
-    # hold objects so any weak references 
-    # are not removed immediately
-    all_refs = {}
-    # the cache using the factory we're given
-    print 'CACHE TYPE:', cache_factory
-    cache = cache_factory()
-    for name in [ 'one', 'two', 'three' ]:
-        o = ExpensiveObject(name)
-        cache[name] = o
-        all_refs[name] = o
-        del o # decref
+  haystack = sys.argv[1]
+  needle = sys.argv[2]
 
-    print 'all_refs =',
-    pprint(all_refs)
-    print 'Before, cache contains:', cache.keys()
-    for name, value in cache.items():
-        print '  %s = %s' % (name, value)
-        del value # decref
-        
-    # Remove all references to our objects except the cache
-    print 'Cleanup:'
-    del all_refs
-    gc.collect()
+  len_haystack = len(haystack)
+  len_needle = len(needle)
 
-    print 'After, cache contains:', cache.keys()
-    for name, value in cache.items():
-        print '  %s = %s' % (name, value)
-    print 'demo returning'
-    return
+  if len_needle > len_haystack:
+    print -1
+  elif len_needle == len_haystack:
+    print 1 if haystack == needle else -1
+  else:
+    delta = len_haystack - len_needle + 1
+    for i in range(delta + 1):
+      index = i - 1
+      if haystack[index:index+len_needle] == needle:
+        print index
+        break
+    else:
+      print -1
 
-demo(dict)
-print
-demo(weakref.WeakValueDictionary)
+if __name__ == '__main__':
+  main()
