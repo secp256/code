@@ -20,13 +20,12 @@ def main():
   if len_needle > len_haystack:
     print -1
   elif len_needle == len_haystack:
-    print 1 if haystack == needle else -1
+    print 0 if haystack == needle else -1
   else:
     delta = len_haystack - len_needle + 1
-    for i in range(delta + 1):
-      index = i - 1
-      if haystack[index:index+len_needle] == needle:
-        print index
+    for i in range(0, delta):
+      if haystack[i:i+len_needle] == needle:
+        print i
         break
     else:
       print -1
