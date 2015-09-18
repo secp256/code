@@ -25,6 +25,7 @@ Bundle 'octol/vim-cpp-enhanced-highlight'
 Bundle 'syui/w-auto.vim'
 Bundle 'tpope/vim-commentary'
 Bundle 'honza/vim-snippets'
+Bundle 'terryma/vim-multiple-cursors'
 
 " vim-scripts repos
 Bundle 'SQLComplete.vim'
