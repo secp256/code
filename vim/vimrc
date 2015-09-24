@@ -34,7 +34,8 @@ Bundle 'FuzzyFinder'
 Bundle 'STL-Syntax'
 Bundle 'a.vim'
 Bundle 'SirVer/ultisnips'
-Bundle 'python.vim'
+"Bundle 'python.vim'
+Bundle 'surround.vim'
 " non-GitHub repos
 Bundle 'git://git.wincent.com/command-t.git'
 " Git repos on your local machine (i.e. when working on your own plugin)
@@ -134,7 +135,9 @@ endif
 
 " 显示行号
 set nu
-imap <c-w> <Esc>
+
+" map Esc --> `
+imap ` <Esc>
 
 filetype plugin on
 
