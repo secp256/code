@@ -3,6 +3,8 @@
 #include "lualib.h"
 #include "lauxlib.h"
 
+// gcc main.c -I /usr/include/lua5.2 -llua5.2
+
 #define MAX_COLOR 255
 
 int read_number(lua_State *L)
