@@ -6,3 +6,7 @@ scores = "(width + height) / 2"
 function f(x, y)
     return x - y
 end
+
+a = "hell"
+print (#a)
+print (#"good\0bye")
