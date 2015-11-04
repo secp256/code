@@ -20,7 +20,7 @@ int main()
             break;
         }
         if (fputs(line, stdout) == EOF) {
-            printf("fputs error to pipi");
+            printf("fputs error to pipe");
             return -1;
         }
     }
