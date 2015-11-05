@@ -1,7 +1,8 @@
 #include <stdio.h> 
-#include "lua.h"
-#include "lualib.h"
-#include "lauxlib.h"
+
+#include <lua.h>
+#include <lualib.h>
+#include <lauxlib.h>
 
 // gcc main.c -I /usr/include/lua5.2 -llua5.2
 

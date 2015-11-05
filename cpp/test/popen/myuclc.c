@@ -4,14 +4,16 @@ int main()
 {
     int c;
     while ((c = getchar()) != EOF) {
-        if (isupper(c))
+        if (isupper(c)) {
             c = tolower(c);
+        }
         if (putchar(c) == EOF) {
             printf("output error");
             return -1;
         }
-        if (c == '\n')
+        if (c == '\n') {
             fflush(stdout);
+        }
     }
     return 0;
 }
