@@ -2,6 +2,7 @@
 #include <iterator>     // std::back_inserter
 #include <vector>       // std::vector
 #include <algorithm>    // std::copy
+#include <string>    // std::copy
 
 int main () {
     std::vector<int> foo,bar;
@@ -15,6 +16,12 @@ int main () {
     for ( std::vector<int>::iterator it = foo.begin(); it!= foo.end(); ++it )
         std::cout << ' ' << *it;
     std::cout << '\n';
+
+    std::string str = "";
+    if (str.empty()) {
+        std::cout << "str is empty" << '\n';
+    }
+
 
     return 0;
 }
