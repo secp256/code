@@ -19,15 +19,14 @@ int main()
     cout << "var result is: " << five_squared << endl;
 
     // python loop
-    // "str" is python type
+    // "str" is python type, equal to "const char *"
     str lines = "for x in range(1, 4):\n"
                       "\tprint x";
     exec(lines, main_namespace);
 
     // python function
-    char *funcdef = "def power(x, y):\n"
-                    "\t return x**y \n"
-                    "print power(5,3)\n";
+    const char *funcdef = "def power(x, y):\n"
+                    "\treturn x**y\n";
     exec(funcdef, main_namespace);
     object f = main_namespace["power"];
     cout << "power(5, 3): " << extract<int>(f(4,2)) << endl;
@@ -43,12 +42,6 @@ int main()
     cout << "python version: " << version << endl;
 
     // call python script
-    /*
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-def foo(i = 4):
-    return i**3
-    */
     str filename = "simple.py";
 
     object simple = exec_file(filename, main_namespace, main_namespace);
