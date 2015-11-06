@@ -24,7 +24,7 @@ int main()
                       "\tprint x";
     exec(lines, main_namespace);
 
-    // python function
+    // call python function
     const char *funcdef = "def power(x, y):\n"
                     "\treturn x**y\n";
     exec(funcdef, main_namespace);
@@ -43,10 +43,18 @@ int main()
 
     // call python script
     str filename = "simple.py";
-
     object simple = exec_file(filename, main_namespace, main_namespace);
     object foo = main_namespace["foo"];
-    cout << "Python has caculated foo as " << extract<int>(foo(5)) << endl;
+    cout << "script output: " << extract<int>(foo(5)) << endl;
+
+    // python data struct
+    // list
+    boost::python::list l;
+    l.append("string");
+    l.append(1.2345);
+    l.sort();
+    cout << extract<double>(l[0]) << endl;
+    cout << string(extract<string>(l[1])) << endl;
 
     // Py_Finalize(); // finish python environment
     return 0;
