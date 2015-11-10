@@ -20,6 +20,7 @@ class MainHandler(tornado.web.RequestHandler):
 
   def post(self):
     self.set_header("Content-Type", "text/plain")
+    print self.get_argument("message")
     self.write("You wrote " + self.get_argument("message"))
 
 class WrapHandler(tornado.web.RequestHandler):   
