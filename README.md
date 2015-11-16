@@ -1,2 +1,2 @@
 # code
-test code for myself
+my test code
