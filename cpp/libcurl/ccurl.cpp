@@ -32,7 +32,9 @@ void Curl::set_curl_opt()
 {
     curl_easy_setopt(curl_, CURLOPT_URL, url_.c_str());
     curl_easy_setopt(curl_, CURLOPT_WRITEFUNCTION, write_body_cb);
+    curl_easy_setopt(curl_, CURLOPT_WRITEDATA, this);
     curl_easy_setopt(curl_, CURLOPT_HEADERFUNCTION, write_head_cb);
+    curl_easy_setopt(curl_, CURLOPT_HEADERDATA, this);
     curl_easy_setopt(curl_, CURLOPT_FOLLOWLOCATION, 1L); // follow location
     // curl_easy_setopt(curl_, CURLOPT_VERBOSE, 1L); // output its progress
     // curl_easy_setopt(&curl_, CURLOPT_TIMEOUT, 60); // set timeout
@@ -47,9 +49,7 @@ size_t Curl::write_body_cb(void *ptr, size_t size, size_t nmemb, void *stream)
 size_t Curl::write_body(void *ptr, size_t size, size_t nmemb)
 {
     const size_t len = size * nmemb;
-    // resp_body_.append((char *)ptr, len);
-    std::string body;
-    body.append((char *)ptr, len);
+    resp_body_.append((char *)ptr, len);
     return len;
 }
 
@@ -62,8 +62,7 @@ size_t Curl::write_head_cb(void *ptr, size_t size, size_t nmemb, void *stream)
 size_t Curl::write_head(void *ptr, size_t size, size_t nmemb)
 {
     const size_t len = size * nmemb;
-    Curl::resp_head_.append((char *)ptr, len);
-    cout << "header: " << Curl::resp_head_ << endl;
+    resp_head_.append((char *)ptr, len);
     return len;
 }
 
