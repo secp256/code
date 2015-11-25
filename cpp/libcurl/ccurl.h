@@ -23,7 +23,7 @@ public:
     std::string get_head() { return resp_head_; }
 
     int download();
-    
+
     int get_curl_status_code();
     int get_last_url(char *p);
 

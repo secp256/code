@@ -42,7 +42,7 @@ void Curl::set_curl_opt()
 
 size_t Curl::write_body_cb(void *ptr, size_t size, size_t nmemb, void *stream)
 {
-	Curl *cd = static_cast< Curl * >(stream);
+    Curl *cd = static_cast< Curl * >(stream);
     return cd->write_body(ptr, size, nmemb);
 }
 
@@ -55,7 +55,7 @@ size_t Curl::write_body(void *ptr, size_t size, size_t nmemb)
 
 size_t Curl::write_head_cb(void *ptr, size_t size, size_t nmemb, void *stream)
 {
-	Curl *cd = static_cast< Curl * >(stream);
+    Curl *cd = static_cast< Curl * >(stream);
     return cd->write_head(ptr, size, nmemb);
 }
 
@@ -69,13 +69,13 @@ size_t Curl::write_head(void *ptr, size_t size, size_t nmemb)
 int Curl::get_curl_status_code()
 {
     int status_code;
-	curl_easy_getinfo(curl_, CURLINFO_RESPONSE_CODE, &status_code);
+    curl_easy_getinfo(curl_, CURLINFO_RESPONSE_CODE, &status_code);
     return status_code;
 }
 
 int Curl::get_last_url(char *p)
 {
-	curl_easy_getinfo(curl_, CURLINFO_EFFECTIVE_URL, &p);
+    curl_easy_getinfo(curl_, CURLINFO_EFFECTIVE_URL, &p);
     return 0;
 }
 
