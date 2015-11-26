@@ -21,7 +21,7 @@ int main(int argc,char * argv[])
     }
 
     ccurl.add_request_head("User-Agent", USER_AGENT);
-    ccurl.set_post_data("hello world");
+    // ccurl.set_post_data("hello world");
     ccurl.set_debug(true);
     int rc = ccurl.download();
 
