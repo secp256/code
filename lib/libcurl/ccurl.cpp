@@ -41,7 +41,7 @@ void Curl::add_request_head(const std::string &key, const std::string &value)
     head_list_ = curl_slist_append(head_list_, head.c_str());
 }
 
-void clear_request_head()
+void Curl::clear_request_head()
 {
     if (NULL != head_list_) {
         curl_slist_free_all(head_list_);
