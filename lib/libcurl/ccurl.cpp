@@ -1,7 +1,7 @@
 #include <stdio.h>
+#include <string.h>
 #include "ccurl.h"
 
-#include <iostream>
 using namespace std;
 
 Curl::Curl() 
@@ -35,6 +35,14 @@ void Curl::set_url(const char *url)
     url_ = url;
 }
 
+void Curl::set_post_data(const char *data)
+{
+    if (NULL == data)
+        post_data_.clear();
+    else
+        post_data_.assign(data, strlen(data));
+}
+
 void Curl::add_request_head(const std::string &key, const std::string &value)
 {
 	std::string head = key + ": " + value;
@@ -58,10 +66,18 @@ void Curl::set_curl_opt()
     curl_easy_setopt(curl_, CURLOPT_HEADERDATA, this);
     curl_easy_setopt(curl_, CURLOPT_FOLLOWLOCATION, 1L); // follow location
     curl_easy_setopt(curl_, CURLOPT_MAXREDIRS, 10);
-    curl_easy_setopt(curl_, CURLOPT_VERBOSE, 1L); // output its progress
+    // curl_easy_setopt(curl_, CURLOPT_VERBOSE, 1L); // output its progress
     // curl_easy_setopt(&curl_, CURLOPT_TIMEOUT, 60); // set timeout
-    if (NULL != head_list_)
+
+    if (NULL != head_list_) {
         curl_easy_setopt(curl_, CURLOPT_HTTPHEADER, head_list_);
+    }
+
+    if (!post_data_.empty()) {
+        curl_easy_setopt(curl_, CURLOPT_POST, 1L);
+        curl_easy_setopt(curl_, CURLOPT_POSTFIELDS, post_data_.c_str());
+        curl_easy_setopt(curl_, CURLOPT_POSTFIELDSIZE, post_data_.length());
+    }
 }
 
 size_t Curl::write_body_cb(void *ptr, size_t size, size_t nmemb, void *stream)
@@ -97,16 +113,24 @@ int Curl::get_curl_status_code()
     return status_code;
 }
 
-int Curl::get_last_url(char **p)
+std::string Curl::get_last_url()
 {
-    curl_easy_getinfo(curl_, CURLINFO_EFFECTIVE_URL, p);
-    return 0;
+    char *p = NULL;
+    curl_easy_getinfo(curl_, CURLINFO_EFFECTIVE_URL, &p);
+
+    std::string url;
+    url.append(p);
+    return url;
 }
 
-int Curl::get_content_type(char **p)
+std::string Curl::get_content_type()
 {
+    char *p = NULL;
 	curl_easy_getinfo(curl_, CURLINFO_CONTENT_TYPE, p);
-    return 0;
+
+    std::string type;
+    type.append(p);
+    return type;
 }
 
 int Curl::download()
@@ -116,13 +140,12 @@ int Curl::download()
 
     // set curl options
     set_curl_opt();
-    cout << "perform curl ..." << endl;
 
     // do curl
     CURLcode rc = curl_easy_perform(curl_);
     if (CURLE_OK != rc) {
         return rc;
     }
-    cout << "curl success" << endl;
+
     return 0;
 }

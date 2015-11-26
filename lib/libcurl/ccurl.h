@@ -17,6 +17,8 @@ private:
 public:
     // set download url
     void set_url(const char *url);
+    // set post data
+    void set_post_data(const char *data);
 
     // add request http head
     void add_request_head(const std::string &key, const std::string &value);
@@ -35,9 +37,9 @@ public:
     // get status code
     int get_curl_status_code();
     // get redirected url
-    int get_last_url(char **p);
+    std::string get_last_url();
     // get content-type
-    int get_content_type(char **p);
+    std::string get_content_type();
 
 private:
     size_t write_head(void *ptr, size_t size, size_t nmemb);
@@ -50,6 +52,7 @@ private:
 private:
     CURL *curl_;
     std::string url_;
+    std::string post_data_;
     std::string resp_body_;
     std::string resp_head_;
 
