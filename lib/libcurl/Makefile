@@ -1,4 +1,4 @@
-TARGETS = ccurl_test
+TARGETS = test
 
 SRCS = $(foreach src, $(wildcard *.cpp), $(basename $(src)))
 COMMOBJS=$(foreach src, $(filter-out $(TARGETS), $(SRCS)), $(src).o )
