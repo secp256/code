@@ -16,9 +16,11 @@ private:
 
 public:
     // set download url
-    void set_url(const char *url);
+    void set_url(const char *url) { url_ = url; }
     // set post data
     void set_post_data(const char *data);
+    // debug
+    void set_debug(bool flag) { debug_ = flag; }
 
     // add request http head
     void add_request_head(const std::string &key, const std::string &value);
@@ -57,6 +59,7 @@ private:
     std::string resp_head_;
 
 	struct curl_slist *head_list_;
+    bool debug_;
 };
 
 #endif // INCLUDE_CURL_H

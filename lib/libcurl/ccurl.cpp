@@ -7,6 +7,7 @@ using namespace std;
 Curl::Curl() 
     : curl_(NULL)
     , head_list_(NULL)
+    , debug_(false)
 {
 }
 
@@ -28,11 +29,6 @@ void Curl::init()
     if (NULL == curl_) {
         curl_ = curl_easy_init();
     }
-}
-
-void Curl::set_url(const char *url)
-{
-    url_ = url;
 }
 
 void Curl::set_post_data(const char *data)
@@ -66,7 +62,9 @@ void Curl::set_curl_opt()
     curl_easy_setopt(curl_, CURLOPT_HEADERDATA, this);
     curl_easy_setopt(curl_, CURLOPT_FOLLOWLOCATION, 1L); // follow location
     curl_easy_setopt(curl_, CURLOPT_MAXREDIRS, 10);
-    // curl_easy_setopt(curl_, CURLOPT_VERBOSE, 1L); // output its progress
+    if (debug_) {
+        curl_easy_setopt(curl_, CURLOPT_VERBOSE, 1L); // output its progress
+    }
     // curl_easy_setopt(&curl_, CURLOPT_TIMEOUT, 60); // set timeout
 
     if (NULL != head_list_) {
