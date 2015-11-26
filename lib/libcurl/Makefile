@@ -1,9 +1,3 @@
-# Makefile : Makefile for Crawler/prog
-# CopyRight (c) 2008 Vobile, Inc.  All Rights Reserved.
-# zhou_jiangang@voblie.cn
-# 2008-05
-
-
 TARGETS = ccurl_test
 
 SRCS = $(foreach src, $(wildcard *.cpp), $(basename $(src)))
