@@ -23,10 +23,3 @@ clean :
 	rm -f $(TARGETS)
 	rm -f $(COMMOBJS)
 	rm -f $(foreach target, $(TARGETS), $(target).o)
-
-##################################
-.SUFFIXES : .cpp
-
-.cpp.o :
-	$(CXX) $(CFLAGS) -c -o $@ $<
-
