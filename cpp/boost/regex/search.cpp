@@ -2,6 +2,7 @@
 #include <string>
 #include "boost/regex.hpp"
 
+// g++ search.cpp -lboost_regex
 int main() {
     // "new" and "delete" 出现的次数是否一样？
     boost::regex reg("(new)|(delete)");
