@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import xml.etree.ElementTree as ET
-tree = ET.parse("xml_etree_data.xml")
+tree = ET.parse("./data/xml_etree_data.xml")
 root = tree.getroot()
 # root = ET.fromstring(country_data_as_string)
 print "root tag: ", root.tag

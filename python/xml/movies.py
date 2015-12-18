@@ -4,7 +4,7 @@
 from xml.dom.minidom import parse
 import xml.dom.minidom
 
-DOMTree = xml.dom.minidom.parse('movies.xml')
+DOMTree = xml.dom.minidom.parse('./data/movies.xml')
 collection = DOMTree.documentElement
 if collection.hasAttribute('shelf'):
   print 'Root element: %s' % collection.getAttribute('shelf')
