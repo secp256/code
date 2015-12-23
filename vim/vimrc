@@ -8,6 +8,7 @@ filetype off                  " required!
 set completeopt-=preview
 
 " git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" aptitude install vim-gui-common
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -116,7 +117,9 @@ vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " 语法高亮度显示
+let python_highlight_all=1
 syntax on
+
 
 filetype plugin indent on
 set viminfo='20,\"50
