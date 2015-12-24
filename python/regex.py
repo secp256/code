@@ -2,6 +2,13 @@
 # -*- coding: utf-8 -*-
 import re
 
+def get_regex_data(regex, data):
+  pattern = re.search(regex, data)
+  if pattern:
+    return pattern.group(1)
+  else:
+    return ''
+
 def test_1():
   strings = [ "<pypix>",
       "<foo",
