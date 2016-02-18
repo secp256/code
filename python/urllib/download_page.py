@@ -7,6 +7,21 @@ import urllib2
 reload(sys)
 sys.setdefaultencoding('utf-8') 
 
+def get_redirect_url(url):  
+  opener = urllib2.build_opener()  
+  request = urllib2.Request(url)  
+  request.get_method = lambda: 'HEAD'  
+  response = opener.open(request) 
+  return response.geturl()
+  
+def get_content_type(url):  
+  opener = urllib2.build_opener()  
+  request = urllib2.Request(url)  
+  request.get_method = lambda: 'HEAD'  
+  response = opener.open(request) 
+  response.info()  
+  return dict(response.headers).get('content-type', 'error')
+
 def download_page(url, proxy = None, data = None, headers = {}):
   # set http proxy
   if proxy:
