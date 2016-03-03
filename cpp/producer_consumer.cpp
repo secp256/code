@@ -1,10 +1,4 @@
 // producer_consumer.cpp
-//////////////////////////////////////////////////////////////////////
-// 有一个生产者在生产产品，这些产品将提供给若干个消费者去消费，为了使生产者和消费者能并发执行，
-// 在两者之间设置一个有多个缓冲区的缓冲池，生产者将它生产的产品放入一个缓冲区中，消费者可以从缓
-// 冲区中取走产品进行消费，所有生产者和消费者都是异步方式运行的，但它们必须保持同步，即不允许消
-// 费者到一个空的缓冲区中取产品，也不允许生产者向一个已经装满产品且尚未被取走的缓冲区中投放产品。
-//////////////////////////////////////////////////////////////////////
 
 #include <pthread.h>
 #include <stdio.h>
@@ -14,7 +8,7 @@
 
 const int BUFFER_LENGTH = 100;
 int buffer[BUFFER_LENGTH];
-int front = 0, rear = -1; // 缓冲区的前端和尾端
+int front = 0, rear = -1;
 int size = 0;
 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
@@ -53,12 +47,11 @@ void *producer(void *arg)
     while (true)
     {
         pthread_mutex_lock(&mutex);
-        while (size == BUFFER_LENGTH) // 如果缓冲区已满，等待; 否则，添加新产品
+        while (size == BUFFER_LENGTH) 
         {
             printf("buffer is full. producer is waiting...\n");
             pthread_cond_wait(&cond, &mutex);
         }
-        // 往尾端添加一个产品
         rear = (rear + 1) % BUFFER_LENGTH;
         buffer[rear] = rand() % BUFFER_LENGTH;
         printf("producer produces the item %d: %d\n", rear, buffer[rear]);
