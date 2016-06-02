@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AddedBehavior	Decorator.cpp	/^void ConcreateDecorator::AddedBehavior()$/;"	f	class:ConcreateDecorator
+Component	Decorator.h	/^    Component(){}$/;"	f	class:Component
+Component	Decorator.h	/^class Component$/;"	c
+ConcreateComponent	Decorator.h	/^    ConcreateComponent(){}$/;"	f	class:ConcreateComponent
+ConcreateComponent	Decorator.h	/^class ConcreateComponent : public Component$/;"	c
+ConcreateDecorator	Decorator.h	/^    ConcreateDecorator(Component* pComponent) : Decorator(pComponent){}$/;"	f	class:ConcreateDecorator
+ConcreateDecorator	Decorator.h	/^class ConcreateDecorator    : public Decorator$/;"	c
+DECORATOR_H	Decorator.h	2;"	d
+Decorator	Decorator.h	/^    Decorator(Component* pComponent) : m_pComponent(pComponent){}$/;"	f	class:Decorator
+Decorator	Decorator.h	/^class Decorator : public Component$/;"	c
+Operation	Decorator.cpp	/^void ConcreateComponent::Operation()$/;"	f	class:ConcreateComponent
+Operation	Decorator.cpp	/^void ConcreateDecorator::Operation()$/;"	f	class:ConcreateDecorator
+m_pComponent	Decorator.h	/^    Component* m_pComponent;$/;"	m	class:Decorator
+main	main.cpp	/^int main()$/;"	f
+~Component	Decorator.h	/^    virtual ~Component(){}$/;"	f	class:Component
+~ConcreateComponent	Decorator.h	/^    virtual ~ConcreateComponent(){}$/;"	f	class:ConcreateComponent
+~ConcreateDecorator	Decorator.h	/^    virtual ~ConcreateDecorator(){}$/;"	f	class:ConcreateDecorator
+~Decorator	Decorator.cpp	/^Decorator::~Decorator()$/;"	f	class:Decorator

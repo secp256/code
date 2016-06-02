@@ -1,0 +1,19 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Garbo	Singleton.h	/^    class Garbo \/\/它的唯一的工作就是在析构函数中删除Singleton的实例$/;"	c	class:Singleton
+GetInstance	Singleton.cpp	/^Singleton Singleton::GetInstance()$/;"	f	class:Singleton
+GetInstancePtr	Singleton.cpp	/^Singleton* Singleton::GetInstancePtr()$/;"	f	class:Singleton
+SINGLETON_H	Singleton.h	2;"	d
+Singleton	Singleton.h	/^    Singleton(){};$/;"	f	class:Singleton
+Singleton	Singleton.h	/^class Singleton$/;"	c
+Test	Singleton.cpp	/^void Singleton::Test()$/;"	f	class:Singleton
+mGarbo	Singleton.h	/^    static Garbo mGarbo;\/\/定义一个静态成员，在程序结束的时候，系统会调用它的析构函数$/;"	m	class:Singleton
+m_pStatic	Singleton.cpp	/^Singleton* Singleton::m_pStatic = NULL;\/\/定义并初始化$/;"	m	class:Singleton	file:
+m_pStatic	Singleton.h	/^    static Singleton* m_pStatic;\/\/ 静态成员变量,提供全局惟一的一个实例$/;"	m	class:Singleton
+main	main.cpp	/^int main()$/;"	f
+~Garbo	Singleton.h	/^        ~Garbo()$/;"	f	class:Singleton::Garbo
+~Singleton	Singleton.h	/^    ~Singleton(){};    $/;"	f	class:Singleton

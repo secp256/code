@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Abstraction	Bridge.cpp	/^Abstraction::Abstraction(Implementor* pImplementor) : m_pImplementor(pImplementor)$/;"	f	class:Abstraction
+Abstraction	Bridge.h	/^class Abstraction$/;"	c
+BRIDEG_H	Bridge.h	2;"	d
+ConcreateImplementorA	Bridge.h	/^    ConcreateImplementorA(){}$/;"	f	class:ConcreateImplementorA
+ConcreateImplementorA	Bridge.h	/^class ConcreateImplementorA : public Implementor$/;"	c
+ConcreateImplementorB	Bridge.h	/^    ConcreateImplementorB(){}$/;"	f	class:ConcreateImplementorB
+ConcreateImplementorB	Bridge.h	/^class ConcreateImplementorB : public Implementor$/;"	c
+Implementor	Bridge.h	/^    Implementor(){}$/;"	f	class:Implementor
+Implementor	Bridge.h	/^class Implementor$/;"	c
+Operation	Bridge.cpp	/^void Abstraction::Operation()$/;"	f	class:Abstraction
+OperationImpl	Bridge.cpp	/^void ConcreateImplementorA::OperationImpl()$/;"	f	class:ConcreateImplementorA
+OperationImpl	Bridge.cpp	/^void ConcreateImplementorB::OperationImpl()$/;"	f	class:ConcreateImplementorB
+m_pImplementor	Bridge.h	/^    Implementor* m_pImplementor;$/;"	m	class:Abstraction
+main	main.cpp	/^int main()$/;"	f
+~Abstraction	Bridge.cpp	/^Abstraction::~Abstraction()$/;"	f	class:Abstraction
+~ConcreateImplementorA	Bridge.h	/^    virtual ~ConcreateImplementorA(){}$/;"	f	class:ConcreateImplementorA
+~ConcreateImplementorB	Bridge.h	/^    virtual ~ConcreateImplementorB(){}$/;"	f	class:ConcreateImplementorB
+~Implementor	Bridge.h	/^    virtual ~Implementor(){}$/;"	f	class:Implementor

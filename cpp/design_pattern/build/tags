@@ -1,0 +1,27 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BUILDER_H	Builder.h	2;"	d
+Builder	Builder.h	/^    Builder(){};$/;"	f	class:Builder
+Builder	Builder.h	/^class Builder$/;"	c
+BuilderPartA	Builder.cpp	/^void ConcreateBuilder1::BuilderPartA()$/;"	f	class:ConcreateBuilder1
+BuilderPartA	Builder.cpp	/^void ConcreateBuilder2::BuilderPartA()$/;"	f	class:ConcreateBuilder2
+BuilderPartB	Builder.cpp	/^void ConcreateBuilder1::BuilderPartB()$/;"	f	class:ConcreateBuilder1
+BuilderPartB	Builder.cpp	/^void ConcreateBuilder2::BuilderPartB()$/;"	f	class:ConcreateBuilder2
+ConcreateBuilder1	Builder.h	/^    ConcreateBuilder1(){}$/;"	f	class:ConcreateBuilder1
+ConcreateBuilder1	Builder.h	/^class ConcreateBuilder1 : public Builder$/;"	c
+ConcreateBuilder2	Builder.h	/^    ConcreateBuilder2(){}$/;"	f	class:ConcreateBuilder2
+ConcreateBuilder2	Builder.h	/^class ConcreateBuilder2 : public Builder$/;"	c
+Construct	Builder.cpp	/^void Director::Construct()$/;"	f	class:Director
+Director	Builder.cpp	/^Director::Director(Builder* pBuilder) : m_pBuilder(pBuilder)$/;"	f	class:Director
+Director	Builder.h	/^class Director$/;"	c
+m_pBuilder	Builder.h	/^    Builder* m_pBuilder;$/;"	m	class:Director
+main	main.cpp	/^int main()$/;"	f
+main	test.c	/^int main ()$/;"	f
+~Builder	Builder.h	/^    virtual ~Builder(){}$/;"	f	class:Builder
+~ConcreateBuilder1	Builder.h	/^    virtual ~ConcreateBuilder1(){}$/;"	f	class:ConcreateBuilder1
+~ConcreateBuilder2	Builder.h	/^    virtual ~ConcreateBuilder2(){}$/;"	f	class:ConcreateBuilder2
+~Director	Builder.cpp	/^Director::~Director()$/;"	f	class:Director

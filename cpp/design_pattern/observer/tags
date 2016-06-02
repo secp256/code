@@ -1,0 +1,31 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Attach	Observer.cpp	/^void Subject::Attach(Observer *pObserver)$/;"	f	class:Subject
+ConcreateObserver	Observer.cpp	/^ConcreateObserver::ConcreateObserver(Subject* sub) : Observer()$/;"	f	class:ConcreateObserver
+ConcreateObserver	Observer.h	/^    ConcreateObserver():Observer(){}$/;"	f	class:ConcreateObserver
+ConcreateObserver	Observer.h	/^class ConcreateObserver : public Observer $/;"	c
+ConcreateSubject	Observer.h	/^    ConcreateSubject() : Subject(){}$/;"	f	class:ConcreateSubject
+ConcreateSubject	Observer.h	/^class ConcreateSubject  : public Subject$/;"	c
+Detach	Observer.cpp	/^void Subject::Detach(Observer *pObserver)$/;"	f	class:Subject
+GetState	Observer.cpp	/^STATE ConcreateSubject::GetState()$/;"	f	class:ConcreateSubject
+Notify	Observer.cpp	/^void Subject::Notify()$/;"	f	class:Subject
+OBSERVER_H	Observer.h	2;"	d
+Observer	Observer.h	/^    Observer() : m_nObserverState(-1){}$/;"	f	class:Observer
+Observer	Observer.h	/^class Observer$/;"	c
+STATE	Observer.h	/^typedef int STATE;$/;"	t
+SetState	Observer.cpp	/^void ConcreateSubject::SetState(STATE nState)$/;"	f	class:ConcreateSubject
+Subject	Observer.h	/^    Subject() : m_nSubjectState(-1){}$/;"	f	class:Subject
+Subject	Observer.h	/^class Subject$/;"	c
+Update	Observer.cpp	/^void ConcreateObserver::Update(Subject* pSubject)$/;"	f	class:ConcreateObserver
+m_ListObserver	Observer.h	/^    std::list<Observer*>    m_ListObserver; \/\/ 保存Observer指针的链表$/;"	m	class:Subject
+m_nObserverState	Observer.h	/^    STATE m_nObserverState;                 \/\/ 模拟保存Observer状态的变量$/;"	m	class:Observer
+m_nSubjectState	Observer.h	/^    STATE m_nSubjectState;                  \/\/ 模拟保存Subject状态的变量$/;"	m	class:Subject
+main	main.cpp	/^int main()$/;"	f
+~ConcreateObserver	Observer.h	/^    virtual ~ConcreateObserver(){}$/;"	f	class:ConcreateObserver
+~ConcreateSubject	Observer.h	/^    virtual ~ConcreateSubject(){}$/;"	f	class:ConcreateSubject
+~Observer	Observer.h	/^    virtual ~Observer(){}$/;"	f	class:Observer
+~Subject	Observer.cpp	/^Subject::~Subject()$/;"	f	class:Subject
