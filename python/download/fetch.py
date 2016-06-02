@@ -4,7 +4,7 @@ from splinter.browser import Browser
 import time
 
 url= "http://www.tvbts.com"
-with Browser() as browser:
+with Browser(user_agent="Android4.2.2") as browser:
   browser.visit(url)
   # login
   browser.fill('username', 'zhuliting')
