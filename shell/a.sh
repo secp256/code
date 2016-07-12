@@ -5,3 +5,5 @@ read -p "Passwd: " password
 
 echo $username
 echo $password
+
+bash -c eyerest-daemon
