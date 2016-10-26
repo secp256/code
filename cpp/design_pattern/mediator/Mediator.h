@@ -19,6 +19,7 @@ public:
         mediator=temp;
     }
 };
+
 //同事A，
 //每个具体同事只知道自己的行为，而不了解其他同事类的情况，但它们却都认识中介者对象
 class ColleagueA : public Colleague
@@ -34,6 +35,7 @@ public:
         cout<<"同事A获得了消息："<<strMsg<<endl;
     }
 };
+
 //同事B
 class ColleagueB : public Colleague
 {

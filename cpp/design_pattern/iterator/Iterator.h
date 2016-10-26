@@ -3,7 +3,7 @@
 
 typedef int DATA;
 class Iterater;
-// 容器的抽象基类
+
 class Aggregate
 {
 public:
