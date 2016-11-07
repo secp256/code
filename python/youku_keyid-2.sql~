@@ -1,0 +1,27 @@
+
+-- 修复youku网站poster为空的历史数据
+-- 数据量17709
+-- 1和5在web working库执行, 2,3,4在wasu taisan工作库执行
+
+--web前台working库，创建临时表，保存前台matchedVideo表中poster为空的keyid
+create table test.tmp_youku_keyid_RT35082_20160630 select key_id from matchedVideo where poster = 'none' and trackingWebsite_id = 11;
+
+--将临时表test.tmp_youku_keyid_RT35082_20160630 导入aliyun taisan working库
+
+--生成对应的ti任务
+INSERT IGNORE INTO workingTextIdentifyTask (video_id,trackingWebsite_id,task_priority,task_status,error_code,retry_count,next_start_time,created_at,updated_at) SELECT vs.id, 11, 'high', 'activated', 0, 0, now(), now(), now() from videoSequence vs, test.tmp_youku_keyid_RT35082_20160630 t where vs.trackingWebsite_id = 11 and vs.key_id = t.key_id;
+
+--ti任务完成后，将对应的信息更新到临时表test.tmp_youku_keyid_RT35082_20160630
+ALTER TABLE test.tmp_youku_keyid_RT35082_20160630 ADD COLUMN poster_id int unsigned DEFAULT NULL;
+ALTER TABLE test.tmp_youku_keyid_RT35082_20160630 ADD COLUMN nick_name varchar(100) CHARACTER SET utf8 NOT NULL;
+ALTER TABLE test.tmp_youku_keyid_RT35082_20160630 ADD COLUMN profile_url varchar(255) CHARACTER SET utf8 NOT NULL;
+UPDATE test.tmp_youku_keyid_RT35082_20160630 t, video v SET t.poster_id = v.poster_id where t.key_id = v.key_id and vs.trackingWebsite_id = 11;
+UPDATE test.tmp_youku_keyid_RT35082_20160630 t, poster p SET t.nick_name = p.nick_name, t.profile_url = p.profile_url where t.poster_id = p.id;
+
+-- 删除ti失败/下线的数据
+DELETE FROM test.tmp_youku_keyid_RT35082_20160630 WHERE nick_name = 'none';
+rename table test.tmp_youku_keyid_RT35082_20160630 to test.tmp_youku_poster_RT35082_20160630;
+
+--将test.tmp_youku_poster_RT35082_20160630到web 前台working表，并更新matchedVideo表
+UPDATE matchedVideo mv, test.tmp_youku_poster_RT35082_20160630 t SET mv.poster = t.nick_name, mv.posterID_url = t.profile_url where mv.key_id = t.key_id and mv.trackingWebsite_id = 11;
+

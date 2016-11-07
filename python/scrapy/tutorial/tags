@@ -1,0 +1,13 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BOT_NAME	tutorial/settings.py	/^BOT_NAME = 'tutorial'$/;"	v
+NEWSPIDER_MODULE	tutorial/settings.py	/^NEWSPIDER_MODULE = 'tutorial.spiders'$/;"	v
+ROBOTSTXT_OBEY	tutorial/settings.py	/^ROBOTSTXT_OBEY = True$/;"	v
+SPIDER_MODULES	tutorial/settings.py	/^SPIDER_MODULES = ['tutorial.spiders']$/;"	v
+TutorialItem	tutorial/items.py	/^class TutorialItem(scrapy.Item):$/;"	c
+TutorialPipeline	tutorial/pipelines.py	/^class TutorialPipeline(object):$/;"	c
+process_item	tutorial/pipelines.py	/^    def process_item(self, item, spider):$/;"	m	class:TutorialPipeline

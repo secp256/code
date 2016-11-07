@@ -1,0 +1,65 @@
+--2016-11-06 09:10:01--  http://cn.bing.com/
+正在解析主机 cn.bing.com (cn.bing.com)... 202.89.233.103, 202.89.233.104
+正在连接 cn.bing.com (cn.bing.com)|202.89.233.103|:80... 已连接。
+已发出 HTTP 请求，正在等待回应... 200 OK
+长度： 121240 (118K) [text/html]
+正在保存至: “/home/zhuliting/KuaiPan/src/code/shell/bing/2016-11-06.html”
+
+     0K .......... .......... .......... .......... .......... 42%  837K 0s
+    50K .......... .......... .......... .......... .......... 84%  839K 0s
+   100K .......... ........                                   100%  105M=0.1s
+
+2016-11-06 09:10:01 (990 KB/s) - 已保存 “/home/zhuliting/KuaiPan/src/code/shell/bing/2016-11-06.html” [121240/121240])
+
+http://s.cn.bing.net/az/hprichbg/rb/UnionStationToronto_ZH-CN10376164284_1920x1080.jpg
+Setting --output-document (outputdocument) to /home/zhuliting/KuaiPan/src/code/shell/bing/2016-11-06.jpg
+DEBUG output created by Wget 1.15 on linux-gnu.
+
+URI encoding = “UTF-8”
+--2016-11-06 09:10:01--  http://s.cn.bing.net/az/hprichbg/rb/UnionStationToronto_ZH-CN10376164284_1920x1080.jpg
+正在解析主机 s.cn.bing.net (s.cn.bing.net)... 122.228.117.14, 180.153.126.30
+Caching s.cn.bing.net => 122.228.117.14 180.153.126.30
+正在连接 s.cn.bing.net (s.cn.bing.net)|122.228.117.14|:80... 已连接。
+Created socket 4.
+Releasing 0x081833d0 (new refcount 1).
+
+---request begin---
+GET /az/hprichbg/rb/UnionStationToronto_ZH-CN10376164284_1920x1080.jpg HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36
+Accept: */*
+Host: s.cn.bing.net
+Connection: Keep-Alive
+
+---request end---
+已发出 HTTP 请求，正在等待回应... 
+---response begin---
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Connection: keep-alive
+Date: Fri, 04 Nov 2016 17:09:01 GMT
+Powered-By-ChinaCache: HIT from 010571435D
+Content-Length: 343496
+Expires: Fri, 11 Nov 2016 17:09:00 GMT
+Vary: Accept-Encoding
+Age: 115259
+Cache-Control: public, max-age=604800
+Server: Microsoft-IIS/8.5
+CC_CACHE: TCP_HIT
+Accept-Ranges: bytes
+
+---response end---
+200 OK
+Registered socket 4 for persistent reuse.
+长度： 343496 (335K) [image/jpeg]
+正在保存至: “/home/zhuliting/KuaiPan/src/code/shell/bing/2016-11-06.jpg”
+
+     0K .......... .......... .......... .......... .......... 14%  967K 0s
+    50K .......... .......... .......... .......... .......... 29% 5.35M 0s
+   100K .......... .......... .......... .......... .......... 44% 1.11M 0s
+   150K .......... .......... .......... .......... .......... 59% 1.09M 0s
+   200K .......... .......... .......... .......... .......... 74% 4.80M 0s
+   250K .......... .......... .......... .......... .......... 89% 1.36M 0s
+   300K .......... .......... .......... .....                100% 5.95M=0.2s
+
+2016-11-06 09:10:03 (1.63 MB/s) - 已保存 “/home/zhuliting/KuaiPan/src/code/shell/bing/2016-11-06.jpg” [343496/343496])
+

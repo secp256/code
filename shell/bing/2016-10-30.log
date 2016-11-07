@@ -1,0 +1,65 @@
+--2016-10-30 09:10:01--  http://cn.bing.com/
+正在解析主机 cn.bing.com (cn.bing.com)... 202.89.233.104, 202.89.233.103
+正在连接 cn.bing.com (cn.bing.com)|202.89.233.104|:80... 已连接。
+已发出 HTTP 请求，正在等待回应... 200 OK
+长度： 121648 (119K) [text/html]
+正在保存至: “/home/zhuliting/KuaiPan/src/code/shell/bing/2016-10-30.html”
+
+     0K .......... .......... .......... .......... .......... 42%  770K 0s
+    50K .......... .......... .......... .......... .......... 84%  769K 0s
+   100K .......... ........                                   100%  105M=0.1s
+
+2016-10-30 09:10:01 (913 KB/s) - 已保存 “/home/zhuliting/KuaiPan/src/code/shell/bing/2016-10-30.html” [121648/121648])
+
+http://s.cn.bing.net/az/hprichbg/rb/RedMaple_ZH-CN13551827423_1920x1080.jpg
+Setting --output-document (outputdocument) to /home/zhuliting/KuaiPan/src/code/shell/bing/2016-10-30.jpg
+DEBUG output created by Wget 1.15 on linux-gnu.
+
+URI encoding = “UTF-8”
+--2016-10-30 09:10:01--  http://s.cn.bing.net/az/hprichbg/rb/RedMaple_ZH-CN13551827423_1920x1080.jpg
+正在解析主机 s.cn.bing.net (s.cn.bing.net)... 180.153.126.30, 183.131.128.32
+Caching s.cn.bing.net => 180.153.126.30 183.131.128.32
+正在连接 s.cn.bing.net (s.cn.bing.net)|180.153.126.30|:80... 已连接。
+Created socket 4.
+Releasing 0x08497378 (new refcount 1).
+
+---request begin---
+GET /az/hprichbg/rb/RedMaple_ZH-CN13551827423_1920x1080.jpg HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36
+Accept: */*
+Host: s.cn.bing.net
+Connection: Keep-Alive
+
+---request end---
+已发出 HTTP 请求，正在等待回应... 
+---response begin---
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Connection: keep-alive
+Date: Fri, 28 Oct 2016 16:12:33 GMT
+Powered-By-ChinaCache: HIT from 010571435D
+Content-Length: 338623
+Expires: Fri, 04 Nov 2016 16:12:32 GMT
+Vary: Accept-Encoding
+Age: 118648
+Cache-Control: public, max-age=604800
+Server: Microsoft-IIS/8.5
+CC_CACHE: TCP_HIT
+Accept-Ranges: bytes
+
+---response end---
+200 OK
+Registered socket 4 for persistent reuse.
+长度： 338623 (331K) [image/jpeg]
+正在保存至: “/home/zhuliting/KuaiPan/src/code/shell/bing/2016-10-30.jpg”
+
+     0K .......... .......... .......... .......... .......... 15%  964K 0s
+    50K .......... .......... .......... .......... .......... 30% 1.95M 0s
+   100K .......... .......... .......... .......... .......... 45% 2.45M 0s
+   150K .......... .......... .......... .......... .......... 60% 2.89M 0s
+   200K .......... .......... .......... .......... .......... 75% 4.41M 0s
+   250K .......... .......... .......... .......... .......... 90% 2.35M 0s
+   300K .......... .......... ..........                      100% 5.65M=0.2s
+
+2016-10-30 09:10:02 (2.14 MB/s) - 已保存 “/home/zhuliting/KuaiPan/src/code/shell/bing/2016-10-30.jpg” [338623/338623])
+

@@ -1,0 +1,30 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Curl	ccurl.cpp	/^Curl::Curl() : curl_(NULL)$/;"	f	class:Curl
+Curl	ccurl.h	/^class Curl$/;"	c
+INCLUDE_CURL_H	ccurl.h	5;"	d
+MAXHEADLEN	a.c	5;"	d	file:
+callback_get_head	a.c	/^size_t callback_get_head(void *ptr, size_t size, size_t nmemb, void *userp)$/;"	f
+curl_	ccurl.h	/^    CURL *curl_;$/;"	m	class:Curl
+download	ccurl.cpp	/^int Curl::download()$/;"	f	class:Curl
+get_body	ccurl.h	/^    std::string get_body() { return resp_body_; }$/;"	f	class:Curl
+get_curl_status_code	ccurl.cpp	/^int Curl::get_curl_status_code()$/;"	f	class:Curl
+get_head	ccurl.h	/^    std::string get_head() { return resp_head_; }$/;"	f	class:Curl
+get_last_url	ccurl.cpp	/^int Curl::get_last_url(char *p)$/;"	f	class:Curl
+init	ccurl.cpp	/^void Curl::init()$/;"	f	class:Curl
+main	a.c	/^int main()$/;"	f
+main	test.cpp	/^int main()$/;"	f
+resp_body_	ccurl.h	/^    std::string resp_body_;$/;"	m	class:Curl
+resp_head_	ccurl.h	/^    std::string resp_head_;$/;"	m	class:Curl
+set_curl_opt	ccurl.cpp	/^void Curl::set_curl_opt()$/;"	f	class:Curl
+set_url	ccurl.cpp	/^void Curl::set_url(const char *url)$/;"	f	class:Curl
+url_	ccurl.h	/^    std::string url_;$/;"	m	class:Curl
+write_body	ccurl.cpp	/^size_t Curl::write_body(void *ptr, size_t size, size_t nmemb)$/;"	f	class:Curl
+write_body_cb	ccurl.cpp	/^size_t Curl::write_body_cb(void *ptr, size_t size, size_t nmemb, void *stream)$/;"	f	class:Curl
+write_head	ccurl.cpp	/^size_t Curl::write_head(void *ptr, size_t size, size_t nmemb)$/;"	f	class:Curl
+write_head_cb	ccurl.cpp	/^size_t Curl::write_head_cb(void *ptr, size_t size, size_t nmemb, void *stream)$/;"	f	class:Curl
+~Curl	ccurl.cpp	/^Curl::~Curl()$/;"	f	class:Curl
