@@ -1,0 +1,27 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Add	Composite.cpp	/^void Composite::Add(Component* pChild)$/;"	f	class:Composite
+Add	Composite.h	/^    virtual void Add(Component* pChild){}\/\/添加一个子部件$/;"	f	class:Component
+COMPOSITE_H	Composite.h	2;"	d
+Component	Composite.h	/^    Component(string paramName){m_strName=paramName;}$/;"	f	class:Component
+Component	Composite.h	/^class Component$/;"	c
+Composite	Composite.h	/^    Composite(string strParam):Component(strParam){}$/;"	f	class:Composite
+Composite	Composite.h	/^class Composite : public Component$/;"	c
+GetChild	Composite.cpp	/^Component* Composite::GetChild(int nIndex)$/;"	f	class:Composite
+GetChild	Composite.h	/^    virtual Component* GetChild(int nIndex){return NULL;}\/\/获取子部件的指针$/;"	f	class:Component
+Leaf	Composite.h	/^    Leaf(string strParam):Component(strParam){}$/;"	f	class:Leaf
+Leaf	Composite.h	/^class Leaf  : public Component$/;"	c
+Operation	Composite.cpp	/^void Composite::Operation()$/;"	f	class:Composite
+Operation	Composite.cpp	/^void Leaf::Operation()$/;"	f	class:Leaf
+Remove	Composite.cpp	/^void Composite::Remove(Component* pChild)$/;"	f	class:Composite
+Remove	Composite.h	/^    virtual void Remove(Component* pChild){}\/\/删除一个子部件$/;"	f	class:Component
+m_ListOfComponent	Composite.h	/^    std::list<Component*>   m_ListOfComponent;$/;"	m	class:Composite
+m_strName	Composite.h	/^    string m_strName;$/;"	m	class:Component
+main	main.cpp	/^int main()$/;"	f
+~Component	Composite.h	/^    virtual ~Component(){}$/;"	f	class:Component
+~Composite	Composite.cpp	/^Composite::~Composite()$/;"	f	class:Composite
+~Leaf	Composite.h	/^    virtual ~Leaf(){}$/;"	f	class:Leaf

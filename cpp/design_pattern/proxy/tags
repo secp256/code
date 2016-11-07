@@ -1,0 +1,20 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+PROXY_H	Proxy.h	2;"	d
+Proxy	Proxy.cpp	/^Proxy::Proxy() : m_pRealSubject(NULL)$/;"	f	class:Proxy
+Proxy	Proxy.h	/^class Proxy : public Subject$/;"	c
+RealSubject	Proxy.cpp	/^RealSubject::RealSubject()$/;"	f	class:RealSubject
+RealSubject	Proxy.h	/^class RealSubject : public Subject$/;"	c
+Request	Proxy.cpp	/^void Proxy::Request()$/;"	f	class:Proxy
+Request	Proxy.cpp	/^void RealSubject::Request()$/;"	f	class:RealSubject
+Subject	Proxy.h	/^    Subject(){}$/;"	f	class:Subject
+Subject	Proxy.h	/^class Subject$/;"	c
+m_pRealSubject	Proxy.h	/^    RealSubject* m_pRealSubject;$/;"	m	class:Proxy
+main	main.cpp	/^int main()$/;"	f
+~Proxy	Proxy.cpp	/^Proxy::~Proxy()$/;"	f	class:Proxy
+~RealSubject	Proxy.h	/^    virtual ~RealSubject(){}$/;"	f	class:RealSubject
+~Subject	Proxy.h	/^    virtual ~Subject(){}$/;"	f	class:Subject

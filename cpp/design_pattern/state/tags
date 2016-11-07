@@ -1,0 +1,20 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ChangeState	state.cpp	/^void Context::ChangeState(State *pState)$/;"	f	class:Context
+ConcreateStateA	state.h	/^class ConcreateStateA$/;"	c
+ConcreateStateB	state.h	/^class ConcreateStateB$/;"	c
+Context	state.cpp	/^Context::Context(State* pState)$/;"	f	class:Context
+Context	state.h	/^class Context$/;"	c
+Handle	state.cpp	/^void ConcreateStateA::Handle(Context* pContext)$/;"	f	class:ConcreateStateA
+Handle	state.cpp	/^void ConcreateStateB::Handle(Context* pContext)$/;"	f	class:ConcreateStateB
+Request	state.cpp	/^void Context::Request()$/;"	f	class:Context
+STATE_H	state.h	2;"	d
+State	state.h	/^class State$/;"	c
+m_pState	state.h	/^    State *m_pState;$/;"	m	class:Context
+main	main.cpp	/^int main()$/;"	f
+~Context	state.cpp	/^Context::~Context()$/;"	f	class:Context
+~State	state.h	/^    virtual ~State(){}$/;"	f	class:State

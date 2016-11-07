@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Colleague	Mediator.h	/^    Colleague(Mediator* temp)$/;"	f	class:Colleague
+Colleague	Mediator.h	/^class Colleague$/;"	c
+ColleagueA	Mediator.h	/^    ColleagueA(Mediator* temp) : Colleague(temp){}$/;"	f	class:ColleagueA
+ColleagueA	Mediator.h	/^class ColleagueA : public Colleague$/;"	c
+ColleagueB	Mediator.h	/^    ColleagueB(Mediator* temp) : Colleague(temp){}$/;"	f	class:ColleagueB
+ColleagueB	Mediator.h	/^class ColleagueB : public Colleague$/;"	c
+ConcreteMediator	Mediator.h	/^class ConcreteMediator : public Mediator$/;"	c
+InitColleage	Mediator.h	/^    void InitColleage(ColleagueA* tempA,ColleagueB* tempB)$/;"	f	class:ConcreteMediator
+Mediator	Mediator.h	/^class Mediator$/;"	c
+Notify	Mediator.h	/^    void Notify(string strMsg)$/;"	f	class:ColleagueA
+Notify	Mediator.h	/^    void Notify(string strMsg)$/;"	f	class:ColleagueB
+Send	Mediator.h	/^    virtual void Send(string msg,Colleague* col)$/;"	f	class:ConcreteMediator
+Send	Mediator.h	/^    void Send(string strMsg)$/;"	f	class:ColleagueA
+Send	Mediator.h	/^    void Send(string strMsg)$/;"	f	class:ColleagueB
+colA	Mediator.h	/^    ColleagueA* colA;$/;"	m	class:ConcreteMediator
+colB	Mediator.h	/^    ColleagueB* colB;$/;"	m	class:ConcreteMediator
+main	main.cpp	/^int main()$/;"	f
+mediator	Mediator.h	/^    Mediator* mediator;$/;"	m	class:Colleague

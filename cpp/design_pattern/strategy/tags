@@ -1,0 +1,18 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AlgorithmInterface	Strategy.cpp	/^void ConcreateStrategyA::AlgorithmInterface()$/;"	f	class:ConcreateStrategyA
+ConcreateStrategyA	Strategy.h	/^class ConcreateStrategyA$/;"	c
+Context	Strategy.cpp	/^    Context::Context(Strategy *pStrategy)$/;"	f	class:Context
+Context	Strategy.h	/^class Context$/;"	c
+ContextInterface	Strategy.cpp	/^void Context::ContextInterface()$/;"	f	class:Context
+STRATEGY_H	Strategy.h	2;"	d
+Strategy	Strategy.h	/^class Strategy$/;"	c
+m_pStrategy	Strategy.h	/^    Strategy* m_pStrategy;$/;"	m	class:Context
+main	main.cpp	/^int main()$/;"	f
+~ConcreateStrategyA	Strategy.h	/^    virtual ~ConcreateStrategyA(){}$/;"	f	class:ConcreateStrategyA
+~Context	Strategy.cpp	/^Context::~Context()$/;"	f	class:Context
+~Strategy	Strategy.h	/^    virtual ~Strategy(){}$/;"	f	class:Strategy

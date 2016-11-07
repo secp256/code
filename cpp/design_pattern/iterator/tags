@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Aggregate	Iterator.h	/^class Aggregate$/;"	c
+ConcreateAggregate	Iterator.cpp	/^ConcreateAggregate::ConcreateAggregate(int nSize) : m_nSize(nSize), m_pData(NULL)$/;"	f	class:ConcreateAggregate
+ConcreateAggregate	Iterator.h	/^class ConcreateAggregate    : public Aggregate$/;"	c
+ConcreateIterater	Iterator.h	/^class ConcreateIterater : public Iterater$/;"	c
+CreateIterater	Iterator.cpp	/^Iterater* ConcreateAggregate::CreateIterater(Aggregate *pAggregate)$/;"	f	class:ConcreateAggregate
+DATA	Iterator.h	/^typedef int DATA;$/;"	t
+GetSize	Iterator.cpp	/^int ConcreateAggregate::GetSize()$/;"	f	class:ConcreateAggregate
+ITERATOR_H	Iterator.h	2;"	d
+Iterater	Iterator.h	/^class Iterater$/;"	c
+m_nIndex	Iterator.h	/^    int         m_nIndex;$/;"	m	class:ConcreateIterater
+m_nSize	Iterator.h	/^    int m_nSize;$/;"	m	class:ConcreateAggregate
+m_pConcreateAggregate	Iterator.h	/^    Aggregate  *m_pConcreateAggregate;$/;"	m	class:ConcreateIterater
+m_pData	Iterator.h	/^    DATA *m_pData;$/;"	m	class:ConcreateAggregate
+main	main.cpp	/^int main()$/;"	f
+~Aggregate	Iterator.h	/^    virtual ~Aggregate(){}$/;"	f	class:Aggregate
+~ConcreateAggregate	Iterator.cpp	/^ConcreateAggregate::~ConcreateAggregate()$/;"	f	class:ConcreateAggregate
+~ConcreateIterater	Iterator.h	/^    virtual ~ConcreateIterater(){}$/;"	f	class:ConcreateIterater
+~Iterater	Iterator.h	/^    virtual ~Iterater(){}$/;"	f	class:Iterater
