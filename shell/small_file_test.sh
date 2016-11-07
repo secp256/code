@@ -2,7 +2,7 @@
 
 local_dir="./small_file"
 remote_dir="small_file"
-bucket="vobile-ugc-test"
+bucket="google-test"
 # MB
 total_file_size=$(du -lh ${local_dir} | awk -F' ' '{print $1}' | grep -oP '\d+')
 echo $total_file_size
