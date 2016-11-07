@@ -47,7 +47,7 @@ def download_page(url, proxy = None, data = None, headers = {}):
 
 def main():
   url = "http://www.baidu.com"
-  header = {'User-Agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36'}
+  header = {'user-agent': 'mozilla/5.0 (x11; linux i686) applewebkit/537.36 (khtml, like gecko) chrome/42.0.2311.135 safari/537.36'}
 
   buf = download_page(url, None, None, header)
   # print buf
