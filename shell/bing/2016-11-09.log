@@ -1,0 +1,67 @@
+--2016-11-09 09:10:01--  http://cn.bing.com/
+正在解析主机 cn.bing.com (cn.bing.com)... 202.89.233.103, 202.89.233.104
+正在连接 cn.bing.com (cn.bing.com)|202.89.233.103|:80... 已连接。
+已发出 HTTP 请求，正在等待回应... 200 OK
+长度： 125476 (123K) [text/html]
+正在保存至: “/home/zhuliting/KuaiPan/src/code/shell/bing/2016-11-09.html”
+
+     0K .......... .......... .......... .......... .......... 40%  887K 0s
+    50K .......... .......... .......... .......... .......... 81%  896K 0s
+   100K .......... .......... ..                              100% 95.8M=0.1s
+
+2016-11-09 09:10:02 (1.06 MB/s) - 已保存 “/home/zhuliting/KuaiPan/src/code/shell/bing/2016-11-09.html” [125476/125476])
+
+http://az29176.vo.msecnd.net/videocontent/Northern_Lights_FF_768_HD_ZH-CN2039501212.jpg
+Setting --output-document (outputdocument) to /home/zhuliting/KuaiPan/src/code/shell/bing/2016-11-09.jpg
+DEBUG output created by Wget 1.15 on linux-gnu.
+
+URI encoding = “UTF-8”
+--2016-11-09 09:10:02--  http://az29176.vo.msecnd.net/videocontent/Northern_Lights_FF_768_HD_ZH-CN2039501212.jpg
+正在解析主机 az29176.vo.msecnd.net (az29176.vo.msecnd.net)... 68.232.45.201, 2606:2800:10c:1ff2:1d06:94b:c0f:14d
+Caching az29176.vo.msecnd.net => 68.232.45.201 2606:2800:10c:1ff2:1d06:94b:c0f:14d
+正在连接 az29176.vo.msecnd.net (az29176.vo.msecnd.net)|68.232.45.201|:80... 已连接。
+Created socket 4.
+Releasing 0x0832d3d0 (new refcount 1).
+
+---request begin---
+GET /videocontent/Northern_Lights_FF_768_HD_ZH-CN2039501212.jpg HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.109 Safari/537.36
+Accept: */*
+Host: az29176.vo.msecnd.net
+Connection: Keep-Alive
+
+---request end---
+已发出 HTTP 请求，正在等待回应... 
+---response begin---
+HTTP/1.1 200 OK
+Accept-Ranges: bytes
+Cache-Control: public, max-age=604800
+Content-Type: image/jpeg
+Date: Wed, 09 Nov 2016 01:10:04 GMT
+Etag: "0x8D3FEE91D94C8C4"
+Last-Modified: Fri, 28 Oct 2016 04:15:56 GMT
+Server: ECAcc (sjc/4E9B)
+X-Cache: HIT
+x-ms-blob-type: BlockBlob
+x-ms-lease-state: available
+x-ms-lease-status: unlocked
+x-ms-request-id: 36d618a2-0001-0018-150f-394a01000000
+x-ms-version: 2015-04-05
+Content-Length: 314928
+
+---response end---
+200 OK
+Registered socket 4 for persistent reuse.
+长度： 314928 (308K) [image/jpeg]
+正在保存至: “/home/zhuliting/KuaiPan/src/code/shell/bing/2016-11-09.jpg”
+
+     0K .......... .......... .......... .......... .......... 16% 77.1K 3s
+    50K .......... .......... .......... .......... .......... 32% 75.2K 3s
+   100K .......... .......... .......... .......... .......... 48%  149K 2s
+   150K .......... .......... .......... .......... .......... 65% 24.2M 1s
+   200K .......... .......... .......... .......... .......... 81% 73.4K 1s
+   250K .......... .......... .......... .......... .......... 97%  100M 0s
+   300K .......                                               100% 84.9M=2.3s
+
+2016-11-09 09:10:09 (132 KB/s) - 已保存 “/home/zhuliting/KuaiPan/src/code/shell/bing/2016-11-09.jpg” [314928/314928])
+
