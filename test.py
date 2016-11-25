@@ -6,6 +6,8 @@ import urllib2
 import urllib
 import os
 from BeautifulSoup import BeautifulSoup
+import time
+import sys
 
 def cbk(a, b, c): 
   '''回调函数
@@ -34,4 +36,8 @@ def getAllImageLink():
         print filesavepath
 
 if __name__ == '__main__':
-  getAllImageLink()
+  #getAllImageLink()
+  for i in range(1,100):
+    time.sleep(1)
+    print '%.2d' % i,
+    sys.stdout.flush()
