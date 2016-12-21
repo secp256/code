@@ -13,7 +13,7 @@ log_file=${file_path}/${cur_date}.log
 img_file=${file_path}/${cur_date}.jpg
 
 wget "$url" -U "$user_agent" -O ${html_file} 1>${log_file} 2>&1
-img_url=$(grep -oP 'g_img={url:\s"([^"]+)"' ${html_file} | sed -e 's/g_img.*\/\///' -e 's/\"//')
-img_url="http://"${img_url}
+img_url=$(grep -oP 'g_img={url:\s"([^"]+)"' ${html_file} | grep -oP '"([^"]+)"' | sed -e 's/\"//g')
+img_url="http://cn.bing.com"${img_url}
 echo $img_url >>${log_file}
 wget $img_url -U "$user_agent" -d -O ${img_file} 1>>${log_file} 2>&1
