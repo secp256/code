@@ -22,19 +22,3 @@ int main()
 目标的状态state可以有Subject自己改变，也可以有Observer的某个操作引起state的改变(可调用Subject的SetState操作)
 当然，可以有多个Subject子类，和多个Observer的子类，也可以有多个要通知的消息。
 ************************************************************************/
-/*
- Attach an Observer
- Attach an Observer
- SetState By ConcreateSubject
- Notify Observers's State
- GetState By ConcreateSubject
- The ObeserverState is 4
- GetState By ConcreateSubject
- The ObeserverState is 4
- -----------------------
- Detach an Observer
- SetState By ConcreateSubject
- Notify Observers's State
- GetState By ConcreateSubject
- The ObeserverState is 10
- */
