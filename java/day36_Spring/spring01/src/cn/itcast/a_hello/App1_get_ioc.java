@@ -11,7 +11,6 @@ import org.springframework.core.io.Resource;
 public class App1_get_ioc {
 
 	// 1. 通过工厂类得到IOC容器创建的对象
-	@Test
 	public void testIOC() throws Exception {
 		// 创建对象
 		// User user = new User();
@@ -27,7 +26,7 @@ public class App1_get_ioc {
 		
 	}
 	
-	//2. （方便）直接得到IOC容器对象 
+	//2. （方便）直接得到IOC容器对象
 	@Test
 	public void testAc() throws Exception {
 		// 得到IOC容器对象
@@ -36,6 +35,10 @@ public class App1_get_ioc {
 		User user = (User) ac.getBean("user");
 		
 		System.out.println(user);
+	}
+
+	public static void main(String[] args) {
+		new App1_get_ioc().testAc();
 	}
 }
 

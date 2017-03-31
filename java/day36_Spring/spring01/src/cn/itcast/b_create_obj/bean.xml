@@ -25,6 +25,7 @@
 	<bean id="str" class="java.lang.String">
 		<constructor-arg value="Jacks"></constructor-arg>
 	</bean>
+
 	<bean id="user3" class="cn.itcast.b_create_obj.User">
 		<constructor-arg index="0" type="int" value="100"></constructor-arg>
 		<constructor-arg index="1" type="java.lang.String" ref="str"></constructor-arg>

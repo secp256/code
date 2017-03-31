@@ -13,7 +13,7 @@
 	<bean id="user" class="cn.itcast.a_hello.User" init-method="init_user" destroy-method="destroy_user" scope="singleton" lazy-init="false"></bean>
 	 -->
 	 
-	<bean id="user1" class="cn.itcast.a_hello.User"></bean>
+	<bean id="user1" class="User"></bean>
 </beans>      
 
 
