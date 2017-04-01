@@ -9,7 +9,10 @@ import org.springframework.context.annotation.Configuration;
 /**
  * Created by zhuliting on 17-3-31.
  */
+
 @Configuration
+
+// this will enable Spring to detect this bean when scanning and instantiate a bean
 @ComponentScan
 public class Application {
 
