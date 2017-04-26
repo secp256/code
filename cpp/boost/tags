@@ -1,0 +1,91 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AgeIndex	multi_index_container.cpp	/^    typedef EmployeeContainer::nth_index<2>::type AgeIndex;  $/;"	t	file:
+BOOST_AUTO_TEST_CASE	test/eg2.cpp	/^BOOST_AUTO_TEST_CASE(t_assign1) {$/;"	f
+BOOST_AUTO_TEST_CASE	test/eg2.cpp	/^BOOST_AUTO_TEST_CASE(t_assign2) {$/;"	f
+BOOST_AUTO_TEST_CASE	test/eg3.cpp	/^BOOST_AUTO_TEST_CASE( test_case )$/;"	f
+BOOST_AUTO_TEST_CASE	test/example.cpp	/^BOOST_AUTO_TEST_CASE(my_test) {$/;"	f
+BOOST_TEST_MODULE	test/eg2.cpp	1;"	d	file:
+BOOST_TEST_MODULE	test/eg3.cpp	1;"	d	file:
+BOOST_TEST_MODULE	test/example.cpp	1;"	d	file:
+DoNotCopy	noncopyable.cpp	/^    DoNotCopy() {};$/;"	f	class:DoNotCopy
+DoNotCopy	noncopyable.cpp	/^    DoNotCopy(int i) {};$/;"	f	class:DoNotCopy
+DoNotCopy	noncopyable.cpp	/^class DoNotCopy : boost::noncopyable {$/;"	c	file:
+Employee	multi_index_container.cpp	/^    Employee(int id_,std::string name_,int age_):id(id_),name(name_),age(age_){}  $/;"	f	struct:Employee
+Employee	multi_index_container.cpp	/^struct Employee{  $/;"	s	file:
+EmployeeContainer	multi_index_container.cpp	/^    > EmployeeContainer;  $/;"	t	file:
+IdIndex	multi_index_container.cpp	/^    typedef EmployeeContainer::nth_index<0>::type IdIndex;  $/;"	t	file:
+MyConfig	test/eg3.cpp	/^    MyConfig()   { std::cout << "global setup\\n"; }$/;"	f	struct:MyConfig
+MyConfig	test/eg3.cpp	/^BOOST_GLOBAL_FIXTURE( MyConfig );$/;"	v
+MyConfig	test/eg3.cpp	/^struct MyConfig {$/;"	s	file:
+NameIndex	multi_index_container.cpp	/^    typedef EmployeeContainer::nth_index<1>::type NameIndex;  $/;"	t	file:
+SuccessPrint	fun2.cpp	/^typedef boost::function<void (int)> SuccessPrint;$/;"	t	file:
+SuccessPrint	function.cpp	/^typedef boost::function <void(int)> SuccessPrint;$/;"	t	file:
+X	function.cpp	/^class X {$/;"	c	file:
+add	test/example.cpp	/^int add(int i, int j)$/;"	f
+add_observer	boost_fun.cpp	/^    void add_observer(function_type t) {$/;"	f	class:notifier
+age	multi_index_container.cpp	/^    int age;  $/;"	m	struct:Employee	file:
+assign_fixture	test/eg2.cpp	/^    assign_fixture() {cout << "suit setup" << endl;}$/;"	f	struct:assign_fixture
+assign_fixture	test/eg2.cpp	/^struct assign_fixture {$/;"	s	file:
+change_value	boost_fun.cpp	/^    void change_value(int i) {$/;"	f	class:notifier
+do_something	scoped_ptr.cpp	/^    void do_something() { cout << "do something" << endl; }$/;"	f	class:impl
+do_sum	function.cpp	/^void do_sum(int *values, int n) $/;"	f
+f	bind.cpp	/^void  f(int  a, int  b)$/;"	f
+foo	boost_python/simple.py	/^def foo(i = 4):$/;"	f
+foo	function.cpp	/^        int foo(int a) {$/;"	f	class:X
+free_test_function	test/eg1.cpp	/^void free_test_function( int i )$/;"	f
+func1	fun.cpp	/^int func1(int i) { return (i*5); }$/;"	f
+func2	fun.cpp	/^bool func2(int i, double d) { return (i > d); }$/;"	f
+function_type	boost_fun.cpp	/^    typedef void (*function_type)(int);$/;"	t	class:notifier	file:
+g	bind.cpp	/^void  g(int  a, int  b, int  c)$/;"	f
+global_fixture	test/eg2.cpp	/^    global_fixture() {cout << "global setup" << endl;}$/;"	f	struct:global_fixture
+global_fixture	test/eg2.cpp	/^BOOST_GLOBAL_FIXTURE(global_fixture);$/;"	v
+global_fixture	test/eg2.cpp	/^struct global_fixture {$/;"	s	file:
+id	multi_index_container.cpp	/^    int id;  $/;"	m	struct:Employee	file:
+impl	scoped_ptr.cpp	/^class impl$/;"	c	file:
+init_unit_test_suite	test/eg1.cpp	/^test_suite* init_unit_test_suite( int argc, char* argv[] )$/;"	f
+interested_in_the_change	boost_fun.cpp	/^void interested_in_the_change(int i) {$/;"	f
+isInitialized	boost_python/pyinit.hpp	/^    bool isInitialized() {$/;"	f	class:pyinit
+main	any.cpp	/^int main()$/;"	f
+main	bind.cpp	/^int  main()$/;"	f
+main	boost_fun.cpp	/^int main() {$/;"	f
+main	boost_python/boost_python.cpp	/^int main()$/;"	f
+main	enable_shared_from_this.cpp	/^int main()$/;"	f
+main	fun.cpp	/^int main()$/;"	f
+main	fun2.cpp	/^int main() $/;"	f
+main	function.cpp	/^int main() $/;"	f
+main	multi_index_container.cpp	/^    int main(){  $/;"	f
+main	noncopyable.cpp	/^int main()$/;"	f
+main	regex/match.cpp	/^int main()$/;"	f
+main	regex/regex_test.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	regex/search.cpp	/^int main() {$/;"	f
+main	scope_ptr.cpp	/^int main()$/;"	f
+main	scoped_ptr.cpp	/^int main()$/;"	f
+main	weak_ptr.cpp	/^int main()$/;"	f
+name	multi_index_container.cpp	/^    string name;  $/;"	m	struct:Employee	file:
+notifier	boost_fun.cpp	/^class notifier {$/;"	c	file:
+operator <<	multi_index_container.cpp	/^    friend std::ostream& operator<<(std::ostream& os,const Employee& e)  $/;"	f	struct:Employee
+print	enable_shared_from_this.cpp	/^    void print()$/;"	f	class:self_shared
+print	fun2.cpp	/^void print(int a) $/;"	f
+print	function.cpp	/^void print(int a)$/;"	f
+print_new_value	boost_fun.cpp	/^void print_new_value(int i) {$/;"	f
+process_ftp	regex/match.cpp	/^int process_ftp(const char* response, std::string *code, std::string* msg)$/;"	f
+pyinit	boost_python/pyinit.hpp	/^    pyinit(int sigs = 1) {$/;"	f	class:pyinit
+pyinit	boost_python/pyinit.hpp	/^class pyinit : boost::noncopyable$/;"	c
+self_shared	enable_shared_from_this.cpp	/^    self_shared(int n):x(n){}$/;"	f	class:self_shared
+self_shared	enable_shared_from_this.cpp	/^class self_shared: public enable_shared_from_this<self_shared>$/;"	c	file:
+test	scope_ptr.cpp	/^void test()$/;"	f
+v	test/eg2.cpp	/^    std::vector<int> v;$/;"	m	struct:assign_fixture	file:
+value_	boost_fun.cpp	/^    int value_;$/;"	m	class:notifier	file:
+vec_	boost_fun.cpp	/^    std::vector<function_type> vec_;$/;"	m	class:notifier	file:
+version	boost_python/pyinit.hpp	/^    const char * version() {$/;"	f	class:pyinit
+x	enable_shared_from_this.cpp	/^    int x;$/;"	m	class:self_shared	file:
+~MyConfig	test/eg3.cpp	/^    ~MyConfig()  { std::cout << "global teardown\\n"; }$/;"	f	struct:MyConfig
+~assign_fixture	test/eg2.cpp	/^    ~assign_fixture() {cout << "suit teardown" << endl;}$/;"	f	struct:assign_fixture
+~global_fixture	test/eg2.cpp	/^    ~global_fixture() {cout << "global teardown" << endl;}$/;"	f	struct:global_fixture
+~impl	scoped_ptr.cpp	/^    ~impl() { cout << "destroying impl" << endl; }$/;"	f	class:impl
+~pyinit	boost_python/pyinit.hpp	/^    ~pyinit() {}$/;"	f	class:pyinit
