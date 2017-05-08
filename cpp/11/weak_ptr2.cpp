@@ -17,6 +17,7 @@ void f()
 
 int main()
 {
+    // test 1
     {
         auto sp = std::make_shared<int>(42);
         gw = sp;
@@ -25,4 +26,19 @@ int main()
     }
 
     f();
+
+    // test 2
+    std::cout << "-------" << std::endl;
+    auto p = std::make_shared<int>(42);
+    std::weak_ptr<int> wp = p;
+    {
+        auto sp = wp.lock();
+        std::cout << *sp << std::endl;
+    }
+    p.reset();
+    if (wp.expired()) {
+        std::cout << "expired" << std::endl;
+    }
+
+    return 0;
 }
