@@ -9,8 +9,9 @@ set completeopt-=preview
 
 " git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 " aptitude install vim-gui-common
+"
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
@@ -29,7 +30,16 @@ Bundle 'honza/vim-snippets'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'fsouza/go.vim'
 Bundle 'jiangmiao/auto-pairs'
-" Bundle 'bronson/vim-trailing-whitespace'
+
+Bundle 'scrooloose/syntastic'
+let g:ycm_show_diagnostics_ui = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_cpp_checkers = ['clang++']
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
+Bundle 'Valloric/YouCompleteMe'
+" cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer
 
 " vim-scripts repos
 Bundle 'SQLComplete.vim'
@@ -37,8 +47,13 @@ Bundle 'L9'
 Bundle 'FuzzyFinder'
 Bundle 'STL-Syntax'
 Bundle 'a.vim'
-Bundle 'SirVer/ultisnips'
+" Bundle 'c.vim'
+Bundle 'ctags.vim'
+Bundle 'taglist.vim'
+"Bundle 'SirVer/ultisnips'
 "Bundle 'python.vim'
+" python代码检查工具
+Bundle 'pylint.vim'
 "Bundle 'ftplugin/sql.vim'
 Bundle 'surround.vim'
 " non-GitHub repos
@@ -47,11 +62,52 @@ Bundle 'git://git.wincent.com/command-t.git'
 
 " vim-snippets
 " SirVer/ultisnips
-let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
-let g:UltiSnipsExpandTrigger="ii"
-let g:UltiSnipsJumpForwardTrigger="<C-b>"
-let g:UltiSnipsJumpBackwardTrigger="<C-z>"
+"let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
+"let g:UltiSnipsExpandTrigger="ii"
+"let g:UltiSnipsJumpForwardTrigger="<C-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<C-z>"
 
+"*****************************************************
+"           YouCompleteMe配置                        *
+"*****************************************************
+"leader映射为逗号“，”
+let mapleader = ","  
+"默认的ycm_extra_conf.py
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"打开vim时不再询问是否加载ycm_extra_conf.py配置
+let g:ycm_confirm_extra_conf=0
+" 使用ctags生成的tags文件
+let g:ycm_collect_identifiers_from_tag_files = 1
+nnoremap <leader>mm:YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>ml:YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gd:YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+"*****************************************************
+"                   taglist配置                      *
+"*****************************************************
+"不显示"press F1 to display help"
+let Tlist_Compact_Format=1
+"窗口在左侧显示
+let Tlist_Use_Right_Window=1
+"只显示当前文件的tags
+let Tlist_Show_One_File=1
+"高亮显示
+let Tlist_Auto_Highlight_tag=1
+"随文件自动更新
+let Tlist_Auto_Update=1
+"设置宽度
+let Tlist_WinWidth=30
+"taglist窗口是最后一个窗口，则退出vim
+let Tlist_Exit_OnlyWindow=1
+"单击跳转
+let Tlist_Use_SingClick=1
+" 自动打开taglist
+"let Tlist_Auto_Open=1
+"打开关闭快捷键
+nnoremap <silent> <F3> :TlistToggle<CR>
+
+
+call vundle#end()
 
 " sql style
 let g:sql_type_default = 'mysql'
@@ -83,11 +139,11 @@ function! s:SET_TAGS()
     endfunction
 
 autocmd BufEnter * call s:SET_TAGS()
-"set tags=tags
+set tags=tags;
 set tags+=~/.vim/systags
 set tags+=~/.vim/pythontags
 " gen systags: 
-" ctags -I __THROW -I __attribute_pure__ -I __nonnull -I __attribute__ --file-scope=yes --langmap=c:+.h --languages=c,c++ --links=yes --c-kinds=+p --c++-kinds=+p --fields=+iaS --extra=+q  -f ~/.vim/systags /usr/include/* /usr/include/netinet/* /usr/include/arpa/* /usr/include/mysql/* /usr/include/curl/*
+" ctags -R --fields=+aiKSz --extra=+q --c++-kinds=+px .
 
 set notagbsearch
 
@@ -113,16 +169,16 @@ set cino=g0:0          " let class's public: don't indent
 map <F12> :!/usr/bin/python %
 map <F9> :!~/go/bin/go run %
 
-" map <c-w><c-t> :Tlist<cr>
-" map <c-w><c-m> :WMToggle<cr>
-" map <c-w><c-f> :FirstExplorerWindow<cr>
-" map <c-w><c-b> :BottomExplorerWindow<cr>
+"map <c-w><c-t> :Tlist<cr>
+"map <c-w><c-m> :WMToggle<cr>
+"map <c-w><c-f> :FirstExplorerWindow<cr>
+"map <c-w><c-b> :BottomExplorerWindow<cr>
 ":set cscopequickfix=s-,c-,d-,i-,t-,e-
 ":cs add /home/broom/yeast/trunk/cscope.out /home/broom/yeast/trunk/
-" let g:winManagerWindowLayout='FileExplorer|TagList'
-":let Tlist_Use_Right_Window=1
+"let g:winManagerWindowLayout='FileExplorer|TagList'
 ":nmap wm :WMToggle<cr>
-nnoremap <silent> <F3> :Grep<CR>
+"nnoremap <silent> <F3> :Grep<CR>
+
 
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
@@ -182,7 +238,9 @@ set t_Co=256
 "set background=dark
 "colorscheme charged-256
 "colorscheme desert256
+"colorscheme desert
 "colorscheme darkburn
-colorscheme monokai
+"colorscheme monokai
+colorscheme molokai
 
 au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 234)
