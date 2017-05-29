@@ -5,11 +5,12 @@ au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 234)
 
 filetype off                  " required!
 
-set completeopt-=preview
+" set completeopt=longest,menu
+" 去掉预览窗口的显示
+" set completeopt-=preview
 
 " git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 " aptitude install vim-gui-common
-"
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
@@ -23,13 +24,21 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
+"highlight
+Bundle 'Valloric/vim-operator-highlight'
 Bundle 'octol/vim-cpp-enhanced-highlight'
+" see http://www.vim.org/scripts/script.php?script_id=2320
 Bundle 'syui/w-auto.vim'
 Bundle 'tpope/vim-commentary'
 Bundle 'honza/vim-snippets'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'fsouza/go.vim'
 Bundle 'jiangmiao/auto-pairs'
+
+" cpp 补全，see http://www.vim.org/scripts/script.php?script_id=1520
+Bundle 'vim-scripts/OmniCppComplete'
+Bundle 'vim-scripts/echofunc.vim'
+let g:EchoFuncLangsUsed = ["cpp"]
 
 Bundle 'scrooloose/syntastic'
 let g:ycm_show_diagnostics_ui = 0
@@ -51,44 +60,33 @@ Bundle 'a.vim'
 Bundle 'ctags.vim'
 Bundle 'taglist.vim'
 "Bundle 'SirVer/ultisnips'
-"Bundle 'python.vim'
+Bundle 'python.vim'
 " python代码检查工具
 Bundle 'pylint.vim'
 "Bundle 'ftplugin/sql.vim'
+
+"usage: cs"'  ds"  ysiw] yssb/yss) ysiw<em>
 Bundle 'surround.vim'
+
 " non-GitHub repos
+" CommandT
 Bundle 'git://git.wincent.com/command-t.git'
-" Git repos on your local machine (i.e. when working on your own plugin)
+" cd ~/.vim/ruby/command-t && ruby extconf.rb &&  make
+" 命令:
+" CommandTBuffer
+" CommandT
+call vundle#end()
 
-" vim-snippets
-" SirVer/ultisnips
-"let g:UltiSnipsSnippetsDir = '~/.vim/bundle/vim-snippets/UltiSnips'
-"let g:UltiSnipsExpandTrigger="ii"
-"let g:UltiSnipsJumpForwardTrigger="<C-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<C-z>"
-
-"*****************************************************
-"           YouCompleteMe配置                        *
-"*****************************************************
-"leader映射为逗号“，”
-let mapleader = ","  
-"默认的ycm_extra_conf.py
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-"打开vim时不再询问是否加载ycm_extra_conf.py配置
-let g:ycm_confirm_extra_conf=0
-" 使用ctags生成的tags文件
-let g:ycm_collect_identifiers_from_tag_files = 1
-nnoremap <leader>mm:YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>ml:YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gd:YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "*****************************************************
 "                   taglist配置                      *
 "*****************************************************
+" ctagst程序的位置
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 "不显示"press F1 to display help"
 let Tlist_Compact_Format=1
 "窗口在左侧显示
-let Tlist_Use_Right_Window=1
+let Tlist_Use_Left_Window=1
 "只显示当前文件的tags
 let Tlist_Show_One_File=1
 "高亮显示
@@ -103,49 +101,41 @@ let Tlist_Exit_OnlyWindow=1
 let Tlist_Use_SingClick=1
 " 自动打开taglist
 "let Tlist_Auto_Open=1
-"打开关闭快捷键
-nnoremap <silent> <F3> :TlistToggle<CR>
+"Tlist 打开关闭快捷键 fn + F9
+nnoremap <silent> <F9> :TlistToggle<CR>
 
 
-call vundle#end()
+"*****************************************************
+"           YouCompleteMe配置                        *
+"*****************************************************
+"leader映射为逗号“，”
+let mapleader = ","  
+"默认的ycm_extra_conf.py
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"打开vim时不再询问是否加载ycm_extra_conf.py配置
+let g:ycm_confirm_extra_conf=0
 
-" sql style
-let g:sql_type_default = 'mysql'
-
-""获取当前路径的上一级的路径
-function! GET_UP_PATH(dir)
-    let pos=len(a:dir)-1
-    while pos>0
-        if (a:dir[pos]=="/" )
-            return  strpart(a:dir,0,pos)
-        endif
-        let pos=pos-1
-    endwhile
-    return  ""
-endfunction
-
-"设置相关tags
-function! s:SET_TAGS()
-    let dir = expand("%:p:h") "获得源文件路径
-        "在路径上递归向上查找tags文件 
-        while dir!=""
-            if findfile("tags",dir) !=""
-                "找到了就加入到tags
-                 exec "set tags+=" . dir . "/tags"
-             endif
-            "得到上级路径
-            let dir=GET_UP_PATH(dir)
-        endwhile
-    endfunction
-
-autocmd BufEnter * call s:SET_TAGS()
-set tags=tags;
-set tags+=~/.vim/systags
-set tags+=~/.vim/pythontags
+" Look for tag def in a "tags" file in the dir of the current file, then for
+" that same file in every folder above the folder of the current file, until the
+" root.
+"set tags=./tags;/
 " gen systags: 
-" ctags -R --fields=+aiKSz --extra=+q --c++-kinds=+px .
-
+" ctags -R --fields=+aiKlSz --extra=+q --c++-kinds=+px .
 set notagbsearch
+" 使用ctags生成的tags文件
+let g:ycm_collect_identifiers_from_tag_files = 1
+
+"leader映射为逗号“，”
+" nnoremap <leader>d:YcmCompleter GoToDeclaration<CR>
+" nnoremap <leader>f:YcmCompleter GoToDefinition<CR>
+" nnoremap <leader>g:YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+""****************************************************
+"           键位映射                                 *
+"*****************************************************
+
+"sql style
+let g:sql_type_default = 'mysql'
 
 set backspace=indent,eol,start
 set tabstop=4
@@ -162,33 +152,35 @@ set ruler
 
 set showcmd
 set hlsearch
+" 搜索到文件两端时不重新搜索
+set nowrapscan
 set incsearch
 set cino=g0:0          " let class's public: don't indent
+
+" none of these should be word dividers, so make them not be
+set iskeyword+=_,$,@,%,#
+
+" allow backspace and cursor keys to cross line boundaries
+set whichwrap+=<,>,h,l
+
+" this makes the color after the textwidth column highlighted
+set colorcolumn=+1
+
+
+" 关闭错误声音
+set noerrorbells
+
+" 显示括号配对情况
+set showmatch
+
 
 " F12 run python
 map <F12> :!/usr/bin/python %
 map <F9> :!~/go/bin/go run %
 
-"map <c-w><c-t> :Tlist<cr>
-"map <c-w><c-m> :WMToggle<cr>
-"map <c-w><c-f> :FirstExplorerWindow<cr>
-"map <c-w><c-b> :BottomExplorerWindow<cr>
-":set cscopequickfix=s-,c-,d-,i-,t-,e-
-":cs add /home/broom/yeast/trunk/cscope.out /home/broom/yeast/trunk/
-"let g:winManagerWindowLayout='FileExplorer|TagList'
-":nmap wm :WMToggle<cr>
-"nnoremap <silent> <F3> :Grep<CR>
-
-
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
-
 " 语法高亮度显示
 let python_highlight_all=1
 syntax on
-
 
 filetype plugin indent on
 set viminfo='20,\"50
@@ -213,8 +205,16 @@ set nu
 
 filetype plugin on
 
+" highlight setting
+let c_no_curly_error=1
+let g:ophigh_color = 226
+let g:ophigh_color_gui = "#F6FF00"
+let g:cpp_member_variable_highlight = 1
+let g:cpp_experimental_simple_template_highlight = 1
+let g:cpp_class_scope_highlight = 1
 
-"------------------------------------------------------------------------------
+
+" ***************python endent***************
 function! SET_PYTHON_IDENT()
 	set shiftwidth=2
 	set softtabstop=2
@@ -223,7 +223,6 @@ function! SET_PYTHON_IDENT()
 	set smarttab
   set cursorcolumn
 endfunction
-
 au FileType python,ruby,go :call SET_PYTHON_IDENT()
 au FileType python set omnifunc=pythoncomplete#Complete
 
@@ -234,13 +233,50 @@ set encoding=UTF-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 set fileencoding=utf-8
 
+"************** 主题******************
 set t_Co=256
 "set background=dark
-"colorscheme charged-256
-"colorscheme desert256
-"colorscheme desert
-"colorscheme darkburn
+set background=light
 "colorscheme monokai
-colorscheme molokai
+"colorscheme molokai
+" 暗色调主题，适合夜间
+" colorscheme colorsbox-stnight 
+" colorscheme colorsbox-faff
+" colorscheme colorsbox-greenish
+" colorscheme colorsbox-material
+" colorscheme colorsbox-stblue    
+"colorscheme colorsbox-stbright  
+colorscheme colorsbox-steighties
+" colorscheme wombat256
+
+" Fast saving
+"前面leader为逗号“，”
+inoremap <leader>w <esc>:w!<cr>
+noremap <leader>q :q<cr>
+noremap <leader>x :x<cr>
+
+"上、下方向键
+nmap j gj
+nmap k gk
+
+inoremap jk <esc>
+
+"insert模式下快捷键
+"方向键
+inoremap <silent> kj <left>
+inoremap <c-l> <right>
+inoremap <c-j> <down>
+inoremap <c-k> <up>
+
+inoremap <c-a> <esc>A
+
+"change word to uppercase, I love this very much
+inoremap <c-u> <esc>gUiwea
+
+"for c++, 行尾插入分号
+imap ;; <esc>A;<esc>
+" enhance '<' '>' , do not need to reselect the block after shift it.
+vnoremap < <gv
+vnoremap > >gv
 
 au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 234)
