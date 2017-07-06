@@ -1,141 +1,7 @@
 set nocompatible
 
-" bundle setting 
-au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 234)
-
-filetype off                  " required!
-
-" set completeopt=longest,menu
-" 去掉预览窗口的显示
-" set completeopt-=preview
-
-" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-" aptitude install vim-gui-common
-set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
-
-" let Vundle manage Vundle
-" required! 
-Bundle 'gmarik/vundle'
-
-" My bundles here:
-" original repos on GitHub
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
-"highlight
-Bundle 'Valloric/vim-operator-highlight'
-Bundle 'octol/vim-cpp-enhanced-highlight'
-" see http://www.vim.org/scripts/script.php?script_id=2320
-Bundle 'syui/w-auto.vim'
-Bundle 'tpope/vim-commentary'
-Bundle 'honza/vim-snippets'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'fsouza/go.vim'
-Bundle 'jiangmiao/auto-pairs'
-
-" cpp 补全，see http://www.vim.org/scripts/script.php?script_id=1520
-Bundle 'vim-scripts/OmniCppComplete'
-Bundle 'vim-scripts/echofunc.vim'
-let g:EchoFuncLangsUsed = ["cpp"]
-
-Bundle 'scrooloose/syntastic'
-let g:ycm_show_diagnostics_ui = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_cpp_checkers = ['clang++']
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-
-Bundle 'Valloric/YouCompleteMe'
-" cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer
-
-" vim-scripts repos
-Bundle 'SQLComplete.vim'
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-Bundle 'STL-Syntax'
-Bundle 'a.vim'
-" Bundle 'c.vim'
-Bundle 'ctags.vim'
-Bundle 'taglist.vim'
-"Bundle 'SirVer/ultisnips'
-Bundle 'python.vim'
-" python代码检查工具
-Bundle 'pylint.vim'
-"Bundle 'ftplugin/sql.vim'
-
-"usage: cs"'  ds"  ysiw] yssb/yss) ysiw<em>
-Bundle 'surround.vim'
-
-" non-GitHub repos
-" CommandT
-Bundle 'git://git.wincent.com/command-t.git'
-" cd ~/.vim/ruby/command-t && ruby extconf.rb &&  make
-" 命令:
-" CommandTBuffer
-" CommandT
-call vundle#end()
-
-
-"*****************************************************
-"                   taglist配置                      *
-"*****************************************************
-" ctagst程序的位置
-let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
-"不显示"press F1 to display help"
-let Tlist_Compact_Format=1
-"窗口在左侧显示
-let Tlist_Use_Left_Window=1
-"只显示当前文件的tags
-let Tlist_Show_One_File=1
-"高亮显示
-let Tlist_Auto_Highlight_tag=1
-"随文件自动更新
-let Tlist_Auto_Update=1
-"设置宽度
-let Tlist_WinWidth=30
-"taglist窗口是最后一个窗口，则退出vim
-let Tlist_Exit_OnlyWindow=1
-"单击跳转
-let Tlist_Use_SingClick=1
-" 自动打开taglist
-"let Tlist_Auto_Open=1
-"Tlist 打开关闭快捷键 fn + F9
-nnoremap <silent> <F9> :TlistToggle<CR>
-
-
-"*****************************************************
-"           YouCompleteMe配置                        *
-"*****************************************************
-"leader映射为逗号“，”
-let mapleader = ","  
-"默认的ycm_extra_conf.py
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-"打开vim时不再询问是否加载ycm_extra_conf.py配置
-let g:ycm_confirm_extra_conf=0
-
-" Look for tag def in a "tags" file in the dir of the current file, then for
-" that same file in every folder above the folder of the current file, until the
-" root.
-"set tags=./tags;/
-" gen systags: 
-" ctags -R --fields=+aiKlSz --extra=+q --c++-kinds=+px .
-set notagbsearch
-" 使用ctags生成的tags文件
-let g:ycm_collect_identifiers_from_tag_files = 1
-
-"leader映射为逗号“，”
-" nnoremap <leader>d:YcmCompleter GoToDeclaration<CR>
-" nnoremap <leader>f:YcmCompleter GoToDefinition<CR>
-" nnoremap <leader>g:YcmCompleter GoToDefinitionElseDeclaration<CR>
-
-""****************************************************
-"           键位映射                                 *
-"*****************************************************
-
 "sql style
-let g:sql_type_default = 'mysql'
+"let g:sql_type_default = 'mysql'
 
 set backspace=indent,eol,start
 set tabstop=4
@@ -166,21 +32,205 @@ set whichwrap+=<,>,h,l
 " this makes the color after the textwidth column highlighted
 set colorcolumn=+1
 
-
 " 关闭错误声音
 set noerrorbells
 
+" 显示行号
+set nu
+"set cursorline
+" 语法高亮度显示
+let python_highlight_all=1
+syntax on
+
 " 显示括号配对情况
 set showmatch
+filetype off                  " required!
 
+set completeopt=longest,menu
+
+" bundle setting 
+" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" aptitude install vim-gui-common
+set rtp+=~/.vim/bundle/vundle/
+call vundle#begin()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+" 状态栏
+Bundle 'vim-airline/vim-airline'
+Bundle 'vim-airline/vim-airline-themes'
+
+" My bundles here:
+" original repos on GitHub
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'tpope/vim-rails.git'
+"highlight
+Bundle 'Valloric/vim-operator-highlight'
+Bundle 'octol/vim-cpp-enhanced-highlight'
+" see http://www.vim.org/scripts/script.php?script_id=2320
+Bundle 'syui/w-auto.vim'
+Bundle 'tpope/vim-commentary'
+Bundle 'honza/vim-snippets'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'fsouza/go.vim'
+Bundle 'jiangmiao/auto-pairs'
+
+" cpp 补全，see http://www.vim.org/scripts/script.php?script_id=1520
+Bundle 'vim-scripts/OmniCppComplete'
+
+Bundle 'scrooloose/syntastic'
+let g:ycm_show_diagnostics_ui = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_cpp_checkers = ['clang++']
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
+Bundle 'Valloric/YouCompleteMe'
+" cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer
+
+" 提示函数参数
+"Bundle 'vim-scripts/echofunc.vim'
+"let g:EchoFuncLangsUsed = ["cpp"]
+
+" vim-scripts repos
+"Bundle 'SQLComplete.vim'
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+Bundle 'STL-Syntax'
+"Bundle 'a.vim'
+"Bundle 'derekwyatt/vim-fswitch'
+
+" Bundle 'c.vim'
+Bundle 'ctags.vim'
+Bundle 'taglist.vim'
+"Bundle 'SirVer/ultisnips'
+Bundle 'python.vim'
+" python代码检查工具
+Bundle 'pylint.vim'
+"Bundle 'ftplugin/sql.vim'
+
+"usage: cs"'  ds"  ysiw] yssb/yss) ysiw<em>
+Bundle 'surround.vim'
+
+" non-GitHub repos
+" CommandT
+Bundle 'git://git.wincent.com/command-t.git'
+" cd ~/.vim/ruby/command-t && ruby extconf.rb &&  make
+" 命令:
+" CommandTBuffer
+" CommandT
+" 
+
+" gen tags
+"Bundle 'vim-scripts/DfrankUtil'
+"Bundle 'vim-scripts/vimprj'
+"Bundle 'vim-scripts/indexer.tar.gz'
+
+call vundle#end()
+
+"leader映射为逗号“，”
+let mapleader = ","  
+
+"*****************************************************
+"                   taglist配置                      *
+"*****************************************************
+" ctagst程序的位置
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+"不显示"press F1 to display help"
+let Tlist_Compact_Format=1
+"窗口在左侧显示
+let Tlist_Use_Left_Window=1
+"只显示当前文件的tags
+let Tlist_Show_One_File=1
+"高亮显示
+let Tlist_Auto_Highlight_tag=1
+"随文件自动更新
+let Tlist_Auto_Update=1
+"设置宽度
+let Tlist_WinWidth=30
+"taglist窗口是最后一个窗口，则退出vim
+let Tlist_Exit_OnlyWindow=1
+"单击跳转
+let Tlist_Use_SingClick=1
+" 自动打开taglist
+"let Tlist_Auto_Open=1
+"Tlist 打开关闭快捷键 fn + F9
+nnoremap <silent> <F9> :TlistToggle<CR>
+let g:tagbar_autopreview = 1
+
+
+"*****************************************************
+"           YouCompleteMe配置                        *
+"*****************************************************
+" YCM 补全菜单配色
+" 菜单
+highlight Pmenu ctermfg=2 ctermbg=3 guifg=#005f87 guibg=#EEE8D5
+
+" 选中项
+highlight PmenuSel ctermfg=2 ctermbg=3 guifg=#AFD700 guibg=#106900
+" 补全功能在注释中同样有效
+let g:ycm_complete_in_comments=1
+
+" 开启 YCM 标签补全引擎
+let g:ycm_collect_identifiers_from_tags_files=1
+
+" 补全内容不以分割子窗口形式出现，只显示补全列表
+set completeopt-=preview
+
+" 从第一个键入字符就开始罗列匹配项
+let g:ycm_min_num_of_chars_for_completion=1
+" 禁止缓存匹配项，每次都重新生成匹配项
+let g:ycm_cache_omnifunc=0
+" 语法关键字补全
+let g:ycm_seed_identifiers_with_syntax=1
+
+"默认的ycm_extra_conf.py
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"打开vim时不再询问是否加载ycm_extra_conf.py配置
+let g:ycm_confirm_extra_conf=0
+let g:ycm_semantic_triggers =  {'c' : ['->', '.'], 'objc' : ['->', '.'], 'ocaml' : ['.', '#'], 'cpp,objcpp' : ['->', '.', '::'], 'php' : ['->', '::'], 'cs,java,javascript,vim,coffee,python,scala,go' : ['.'], 'ruby' : ['.', '::']}
+
+
+" Look for tag def in a "tags" file in the dir of the current file, then for
+" that same file in every folder above the folder of the current file, until the
+" root.
+set tags=./tags;/
+" gen systags: 
+" ctags -R --fields=+aiKlSz --extra=+q --c++-kinds=+px .
+"set notagbsearch
+
+
+" easymotin
+"let g:EasyMotion_leader_key = 'f'
+" <Leader>f{char} to move to {char}
+map  <leader>f <Plug>(easymotion-bd-f)
+nmap <leader>f <Plug>(easymotion-overwin-f)
+" m{char}{char} to move to {char}{char}
+nmap <leader>m <Plug>(easymotion-overwin-f2)
+" Move to line
+map <leader>l <Plug>(easymotion-bd-jk)
+nmap <leader>l <Plug>(easymotion-overwin-line)
+" Move to word
+"map  <leader>w <Plug>(easymotion-bd-w)
+"nmap <leader>w <Plug>(easymotion-overwin-w)
+
+
+"leader映射为逗号“，”
+" nnoremap <leader>d:YcmCompleter GoToDeclaration<CR>
+" nnoremap <leader>f:YcmCompleter GoToDefinition<CR>
+" nnoremap <leader>g:YcmCompleter GoToDefinitionElseDeclaration<CR>
+
+""****************************************************
+"           键位映射                                 *
+"*****************************************************
 
 " F12 run python
 map <F12> :!/usr/bin/python %
 map <F9> :!~/go/bin/go run %
 
-" 语法高亮度显示
-let python_highlight_all=1
-syntax on
 
 filetype plugin indent on
 set viminfo='20,\"50
@@ -200,13 +250,10 @@ if has("autocmd")
 endif
 " set bg=dark
 
-" 显示行号
-set nu
-
 filetype plugin on
 
 " highlight setting
-let c_no_curly_error=1
+"let c_no_curly_error=1
 let g:ophigh_color = 226
 let g:ophigh_color_gui = "#F6FF00"
 let g:cpp_member_variable_highlight = 1
@@ -240,24 +287,50 @@ set background=light
 "colorscheme monokai
 "colorscheme molokai
 " 暗色调主题，适合夜间
-" colorscheme colorsbox-stnight 
-" colorscheme colorsbox-faff
-" colorscheme colorsbox-greenish
+colorscheme colorsbox-stnight 
+"colorscheme colorsbox-faff
+"colorscheme colorsbox-greenish
 " colorscheme colorsbox-material
-" colorscheme colorsbox-stblue    
+"colorscheme colorsbox-stblue    
 "colorscheme colorsbox-stbright  
-colorscheme colorsbox-steighties
+"colorscheme colorsbox-steighties
 " colorscheme wombat256
+
+" 显示状态栏
+set laststatus=2
+" 设置状态栏主题风格
+let g:Powerline_colorscheme='molokai256'
+let g:airline_theme = 'badwolf' 
 
 " Fast saving
 "前面leader为逗号“，”
+noremap <leader>w <esc>:w!<cr>
 inoremap <leader>w <esc>:w!<cr>
-noremap <leader>q :q<cr>
+noremap <leader>q :q!<cr>
 noremap <leader>x :x<cr>
+inoremap <leader>x <esc>:x<cr>
 
 "上、下方向键
 nmap j gj
 nmap k gk
+
+" find file
+noremap <leader>t :CommandT<cr>
+
+"分屏
+noremap <leader>s :vs<cr>
+noremap <leader>p :sp<cr>
+
+" 分屏多窗口跳转
+noremap zj <c-w>j
+noremap zk <c-w>k
+noremap zl <c-w>l
+noremap zh <c-w>h
+
+
+
+" Ctrl + ]  多选择跳转
+"nmap <c-]> g<c-]>
 
 inoremap jk <esc>
 
@@ -278,5 +351,3 @@ imap ;; <esc>A;<esc>
 " enhance '<' '>' , do not need to reselect the block after shift it.
 vnoremap < <gv
 vnoremap > >gv
-
-au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 234)

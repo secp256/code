@@ -1,0 +1,6 @@
+/Users/zhuliting/code/cpp/cmake/t2/build/CMakeFiles/rebuild_cache.dir
+/Users/zhuliting/code/cpp/cmake/t2/build/CMakeFiles/edit_cache.dir
+/Users/zhuliting/code/cpp/cmake/t2/build/lib/CMakeFiles/rebuild_cache.dir
+/Users/zhuliting/code/cpp/cmake/t2/build/lib/CMakeFiles/edit_cache.dir
+/Users/zhuliting/code/cpp/cmake/t2/build/lib/CMakeFiles/hello_static.dir
+/Users/zhuliting/code/cpp/cmake/t2/build/lib/CMakeFiles/hello.dir
