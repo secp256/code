@@ -8,6 +8,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set cindent
+set mps+=<:>
 
 " 代码折叠
 set fdm=marker
@@ -40,6 +41,7 @@ set nu
 "set cursorline
 " 语法高亮度显示
 let python_highlight_all=1
+let go_highlight_all=1
 syntax on
 
 " 显示括号配对情况
@@ -48,14 +50,14 @@ filetype off                  " required!
 
 set completeopt=longest,menu
 
-" bundle setting 
+" bundle setting
 " git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 " aptitude install vim-gui-common
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 " 状态栏
 Bundle 'vim-airline/vim-airline'
@@ -82,14 +84,17 @@ Bundle 'jiangmiao/auto-pairs'
 Bundle 'vim-scripts/OmniCppComplete'
 
 Bundle 'scrooloose/syntastic'
+let g:ycm_python_binary_path = '/usr/local/bin/python3'
 let g:ycm_show_diagnostics_ui = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_cpp_checkers = ['clang++']
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 
+" git clone https://github.com/Valloric/YouCompleteMe.git ~/.vim/bundle/YouCompleteMe
+" git submodule update --init --recursive
+" cd ~/.vim/bundle/YouCompleteMe && ./install.py --go-completer --clang-completer
 Bundle 'Valloric/YouCompleteMe'
-" cd ~/.vim/bundle/YouCompleteMe && ./install.py --clang-completer
 
 " 提示函数参数
 "Bundle 'vim-scripts/echofunc.vim'
@@ -102,6 +107,9 @@ Bundle 'FuzzyFinder'
 Bundle 'STL-Syntax'
 "Bundle 'a.vim'
 "Bundle 'derekwyatt/vim-fswitch'
+
+"去除行尾空格
+Bundle 'bronson/vim-trailing-whitespace'
 
 " Bundle 'c.vim'
 Bundle 'ctags.vim'
@@ -118,21 +126,35 @@ Bundle 'surround.vim'
 " non-GitHub repos
 " CommandT
 Bundle 'git://git.wincent.com/command-t.git'
-" cd ~/.vim/ruby/command-t && ruby extconf.rb &&  make
+" cd ~/.vim/bundle/command-t/ruby/command-t && ruby ext/command-t/extconf.rb && rake make
 " 命令:
 " CommandTBuffer
 " CommandT
-" 
+"
 
 " gen tags
 "Bundle 'vim-scripts/DfrankUtil'
 "Bundle 'vim-scripts/vimprj'
 "Bundle 'vim-scripts/indexer.tar.gz'
 
+Bundle 'Chiel92/vim-autoformat'
+
+" go
+Bundle 'fatih/vim-go'
+Bundle 'vim-jp/vim-go-extra'
+Bundle 'dgryski/vim-godef'
+Bundle 'Blackrush/vim-gocode'
+Bundle 'zmb3/gogetdoc'
+Bundle 'majutsushi/tagbar'
+
+" jump, reuse the current window
+let g:godef_split=0
+" brew install gotags
+
 call vundle#end()
 
 "leader映射为逗号“，”
-let mapleader = ","  
+let mapleader = ","
 
 "*****************************************************
 "                   taglist配置                      *
@@ -155,10 +177,11 @@ let Tlist_WinWidth=30
 let Tlist_Exit_OnlyWindow=1
 "单击跳转
 let Tlist_Use_SingClick=1
+
 " 自动打开taglist
-"let Tlist_Auto_Open=1
-"Tlist 打开关闭快捷键 fn + F9
-nnoremap <silent> <F9> :TlistToggle<CR>
+let Tlist_Auto_Open=1
+"Tlist 打开关闭快捷键 fn + F1
+nnoremap <silent> <F1> :TlistToggle<CR>
 let g:tagbar_autopreview = 1
 
 
@@ -191,14 +214,14 @@ let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 "打开vim时不再询问是否加载ycm_extra_conf.py配置
 let g:ycm_confirm_extra_conf=0
-let g:ycm_semantic_triggers =  {'c' : ['->', '.'], 'objc' : ['->', '.'], 'ocaml' : ['.', '#'], 'cpp,objcpp' : ['->', '.', '::'], 'php' : ['->', '::'], 'cs,java,javascript,vim,coffee,python,scala,go' : ['.'], 'ruby' : ['.', '::']}
+let g:ycm_semantic_triggers =  {'c' : ['->', '.'], 'objc' : ['->', '.'], 'ocaml' : ['.', '#'], 'cpp,objcpp' : ['->', '.', '::'], 'php' : ['->', '::'], 'cs,java,javascript,vim,coffee,python,scala,go' : ['.']}
 
 
 " Look for tag def in a "tags" file in the dir of the current file, then for
 " that same file in every folder above the folder of the current file, until the
 " root.
 set tags=./tags;/
-" gen systags: 
+" gen systags:
 " ctags -R --fields=+aiKlSz --extra=+q --c++-kinds=+px .
 "set notagbsearch
 
@@ -229,7 +252,7 @@ nmap <leader>l <Plug>(easymotion-overwin-line)
 
 " F12 run python
 map <F12> :!/usr/bin/python %
-map <F9> :!~/go/bin/go run %
+map <F11> :!~/go/bin/go run %
 
 
 filetype plugin indent on
@@ -244,13 +267,11 @@ if has("autocmd")
     autocmd BufRead *.txt set tw=78
     " When editing a file, always jump to the last cursor position
     autocmd BufReadPost *
-        \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-        \   exe "normal g'\"" |
-        \ endif
+                \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+                \   exe "normal g'\"" |
+                \ endif
 endif
 " set bg=dark
-
-filetype plugin on
 
 " highlight setting
 "let c_no_curly_error=1
@@ -260,17 +281,40 @@ let g:cpp_member_variable_highlight = 1
 let g:cpp_experimental_simple_template_highlight = 1
 let g:cpp_class_scope_highlight = 1
 
+""****************************************************
+"           auto format                              *
+"*****************************************************
+"clang-format for formating cpp code
+nnoremap <leader>c :call FormatCode()<cr><cr>
+vnoremap <leader>c :call FormatCode()<CR><CR>
+"nnoremap <leader>lf :call FormatCode("LLVM")<cr>
+"vnoremap <leader>lf :call FormatCode("LLVM")<cr>
+let g:autoformat_verbosemode = 1
+func FormatCode()
+    let firstline=line(".")
+    let lastline=line(".")
+    " Visual mode
+    if exists(a:firstline)
+        firstline = a:firstline
+        lastline = a:lastline
+    endif
+    let g:formatdef_clangformat = "'clang-format --lines='.a:firstline.':'.a:lastline.' --assume-filename='.bufname('%').' -style=file'"
+    let formatcommand = ":" . firstline . "," . lastline . "Autoformat"
+    exec formatcommand
+endfunc
 
 " ***************python endent***************
+filetype plugin on
+
 function! SET_PYTHON_IDENT()
-	set shiftwidth=2
-	set softtabstop=2
-	set tabstop=2
-	set backspace=2
-	set smarttab
-  set cursorcolumn
+    set shiftwidth=2
+    set softtabstop=2
+    set tabstop=2
+    set backspace=2
+    set smarttab
+    set cursorcolumn
 endfunction
-au FileType python,ruby,go :call SET_PYTHON_IDENT()
+au FileType python,go :call SET_PYTHON_IDENT()
 au FileType python set omnifunc=pythoncomplete#Complete
 
 " Encoding related
@@ -284,23 +328,27 @@ set fileencoding=utf-8
 set t_Co=256
 "set background=dark
 set background=light
-"colorscheme monokai
+" colorscheme monokai
 "colorscheme molokai
 " 暗色调主题，适合夜间
-colorscheme colorsbox-stnight 
+colorscheme colorsbox-stnight
+"colorscheme colorsbox-steighties
 "colorscheme colorsbox-faff
 "colorscheme colorsbox-greenish
 " colorscheme colorsbox-material
-"colorscheme colorsbox-stblue    
-"colorscheme colorsbox-stbright  
-"colorscheme colorsbox-steighties
+"colorscheme colorsbox-stblue
+"colorscheme colorsbox-stbright
 " colorscheme wombat256
 
 " 显示状态栏
 set laststatus=2
 " 设置状态栏主题风格
-let g:Powerline_colorscheme='molokai256'
-let g:airline_theme = 'badwolf' 
+let g:Powerline_colorscheme='monokai256'
+let g:airline_theme = 'badwolf'
+
+"显示行尾空格
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /"s"+$/
 
 " Fast saving
 "前面leader为逗号“，”
@@ -309,6 +357,10 @@ inoremap <leader>w <esc>:w!<cr>
 noremap <leader>q :q!<cr>
 noremap <leader>x :x<cr>
 inoremap <leader>x <esc>:x<cr>
+
+
+" 去除行尾空格快捷键
+map <leader><space> :FixWhitespace<cr>
 
 "上、下方向键
 nmap j gj
@@ -321,13 +373,14 @@ noremap <leader>t :CommandT<cr>
 noremap <leader>s :vs<cr>
 noremap <leader>p :sp<cr>
 
+noremap <leader>d :<c-d><cr>
+noremap <leader>u :<c-u><cr>
+
 " 分屏多窗口跳转
 noremap zj <c-w>j
 noremap zk <c-w>k
 noremap zl <c-w>l
 noremap zh <c-w>h
-
-
 
 " Ctrl + ]  多选择跳转
 "nmap <c-]> g<c-]>
