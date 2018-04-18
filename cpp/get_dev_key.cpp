@@ -18,8 +18,8 @@ string gen_wif_key(string raw_wif_key, int index, string c)
 int main(int argc, char **argv)
 {
     // real public key
-    // graphene::chain::public_key_type pub_key {"GXC4z4QJhh5Pia6DPgLwB8vTKhcCUagNesT3cV6N8pvXXfBR86NBH"};
-    graphene::chain::public_key_type pub_key{"GXC8GE4vTLWj76HFtkD6gU23TzRUXKZC4F6QqLcw9krnr9mfZTYPr"};
+    graphene::chain::public_key_type pub_key {"GXC4z4QJhh5Pia6DPgLwB8vTKhcCUagNesT3cV6N8pvXXfBR86NBH"};
+    // graphene::chain::public_key_type pub_key{"GXC8GE4vTLWj76HFtkD6gU23TzRUXKZC4F6QqLcw9krnr9mfZTYPr"};
 
     // raw input wif_key, 50 byte
     std::string raw_wif_key;
