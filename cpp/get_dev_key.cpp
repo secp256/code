@@ -34,8 +34,7 @@ int main(int argc, char **argv)
     }
 
     if (need_help) {
-        std::cerr << argv[0] << " " << argv[1] << "\n";
-        std::cerr << "example:\n get-dev-key raw_wif_key\n";
+        std::cerr << "usage:\n get-dev-key raw_wif_key\n";
         return 1;
     }
 
