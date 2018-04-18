@@ -25,7 +25,7 @@ int main(int argc, char **argv)
     std::string raw_wif_key;
 
     bool need_help = false;
-    if (argc < 1)
+    if (argc < 2)
         need_help = true;
     else {
         raw_wif_key = argv[1];
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
     }
 
     if (need_help) {
-        std::cerr << argc << " " << argv[1] << "\n";
+        std::cerr << argv[0] << " " << argv[1] << "\n";
         std::cerr << "example:\n get-dev-key raw_wif_key\n";
         return 1;
     }
