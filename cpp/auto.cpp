@@ -9,8 +9,7 @@ using std::vector;
 using std::cout;
 using std::endl;
 
-struct object_id_type
-{
+struct object_id_type {
     object_id_type(int num, string desc) {
         number = num;
         description = desc;
@@ -67,27 +66,22 @@ struct CmpByType {
     }
 };
 
-std::ostream& operator<<(std::ostream& os, const Object &obj) {
+std::ostream &operator<<(std::ostream &os, const Object &obj)
+{
     os << "{" << obj.id << "." + obj.name + ".";
     os << obj.type << "}";
     return os;
 }
 
 typedef boost::function<bool(Object, Object)> Func;
-bool cmp_by_id(const Object &l, const Object &r)
-{
-    return l.id < r.id;
-}
+bool cmp_by_id(const Object &l, const Object &r) { return l.id < r.id; }
 
 bool cmp_by_name(const Object &l, const Object &r)
 {
     return l.name.compare(r.name) < 0 ? true : false;
 }
 
-bool cmp_by_type(const Object &l, const Object &r)
-{
-    return l.type < r.type;
-}
+bool cmp_by_type(const Object &l, const Object &r) { return l.type < r.type; }
 
 int main()
 {

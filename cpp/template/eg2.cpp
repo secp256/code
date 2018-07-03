@@ -26,6 +26,7 @@ int main()
     cout << IsPointer<int*>::Result << endl;
     cout << IsPointer<int>::Result << endl;
     IsPointer<int*>::ValueType i = 1;
+    cout << i << endl;
     // IsPointer<int>::ValueType j = 1;  
     return 0;
 }

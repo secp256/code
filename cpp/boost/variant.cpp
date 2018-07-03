@@ -25,7 +25,7 @@ int main()
 {
     boost::variant<int, string, double, char> my_first_variant("hello world");
     cout << my_first_variant << endl;
-    
+
     /*
     my_first_variant=24;
     my_first_variant=2.52;
@@ -37,7 +37,7 @@ int main()
     int* val = boost::get<int>(&my_first_variant);
     assert(val && (*val) == 0);
     */
-    
+
     print_visitor v;
     boost::apply_visitor(v, my_first_variant);
 

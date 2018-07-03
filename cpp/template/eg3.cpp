@@ -5,7 +5,7 @@ template<bool>
 struct StaticAssert;
 
 // 完全特化
-template<> 
+template<>
 struct StaticAssert<true>
 {};
 
